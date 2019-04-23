@@ -1,0 +1,36 @@
+@import "common/variables";
+@import "common/buttons";
+
+@import "components/navbar";
+@import "components/footer";
+
+
+* {
+	box-sizing: border-box;
+
+	&:after,
+	&:before {
+		box-sizing: border-box;
+	}
+}
+
+html {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: 'Source Sans Pro', Source Sans Pro, sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 1.4;
+
+	color: $black;
+	background-color: $background;
+
+	position: relative;
+	min-height: 100%;
+	margin: 0;
+	padding: 0;
+}

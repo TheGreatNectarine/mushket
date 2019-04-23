@@ -1,0 +1,11 @@
+@import "../common/variables";
+
+footer {
+	padding: 20px 0;
+	background-color: $darkMain;
+	color: $white;
+
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}

@@ -4,7 +4,7 @@ const students = require('../db/students-dao');
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-	res.render("index", {title: "4лен сосі"});
+	res.render("pages/index");
 });
 
 router.get("/:id", async (req, res, next) => {
