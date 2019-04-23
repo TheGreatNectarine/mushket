@@ -9,14 +9,14 @@ const logger = require("morgan");
 const app = express();
 
 const setUpRoutes = () => {
-	app.use(`/`, require("./routes/index"));
-	app.use(`api/v1/students`, require("./routes/studentsRouter"));
-	app.use(`api/v1/teachers`, require("./routes/teachersRouter"));
-	app.use(`api/v1/subjects`, require("./routes/subjectsRouter"));
-	app.use(`api/v1/tags`, require("./routes/tagsRouter"));
-	app.use(`api/v1/faculties`, require("./routes/facultiesRouter"));
-	app.use(`api/v1/specializations`, require("./routes/specializationsRouter"));
-	app.use(`api/v1/chairs`, require("./routes/chairsRouter"));
+	app.use(`/`, require("./api/index"));
+	app.use(`api/v1/students`, require("./api/studentsRouter"));
+	app.use(`api/v1/teachers`, require("./api/teachersRouter"));
+	app.use(`api/v1/subjects`, require("./api/subjectsRouter"));
+	app.use(`api/v1/tags`, require("./api/tagsRouter"));
+	app.use(`api/v1/faculties`, require("./api/facultiesRouter"));
+	app.use(`api/v1/specializations`, require("./api/specializationsRouter"));
+	app.use(`api/v1/chairs`, require("./api/chairsRouter"));
 };
 
 const setUpViews = () => {
