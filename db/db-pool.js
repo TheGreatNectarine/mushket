@@ -7,5 +7,3 @@ module.exports = new Pool({
 	port: 5432,
 	ssl: true
 });
-
-module.exports.students = students;
