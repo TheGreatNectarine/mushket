@@ -8,17 +8,17 @@ const pool = new Pool({
 	ssl: true
 });
 
-function getStudentById(req, res) {
-	const id = req.params.id;
-	pool.query("SELECT * FROM student WHERE id = $1", [id], (err, results) => {
-		console.log("QUERY");
-		if (err) {
-			res.send({success: false, error: err});
-			console.log("eror v debalo");
-			throw err;
+const students = {
+	getByID: async (id) => {
+		const client = await pool.connect();
+		try {
+			const result = await client.query("SELECT * FROM student WHERE id = $1", [id]);
+			return {success: true, data: result ? result.rows : []};
+		} catch (e) {
+			return {success: false, err: e};
 		}
-		res.send({success: true, data: results});
-	});
-}
+	},
 
-module.exports.getStudentByID = getStudentById;
+};
+
+module.exports.students = students;
