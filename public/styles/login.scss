@@ -25,7 +25,7 @@ body {
 	.card-container {
 		background: $darkMain;
 		border-radius: $borderRadiusMedium;
-		padding: 15px;
+		padding: 25px 15px;
 
 		#card {
 			#welcome {
@@ -42,9 +42,11 @@ body {
 				.sign-in {
 					background-color: #B84014;
 					color: white;
+					font-size: 20px;
 				}
 			}
-
 		}
 	}
 }
+
+

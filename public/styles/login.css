@@ -23,7 +23,7 @@ body {
 .login-container .card-container {
   background: #232b2d;
   border-radius: 7px;
-  padding: 15px;
+  padding: 25px 15px;
 }
 .login-container .card-container #card #welcome {
   font-family: "Berkshire Swash", cursive;
@@ -38,6 +38,7 @@ body {
 .login-container .card-container #card figure .sign-in {
   background-color: #B84014;
   color: white;
+  font-size: 20px;
 }
 
 /*# sourceMappingURL=login.css.map */
