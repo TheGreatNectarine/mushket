@@ -28,14 +28,6 @@ body {
 		padding: 15px;
 
 		#card {
-			//position: absolute;
-			//left: 50%;
-			//position: relative;
-			-webkit-transition: -webkit-transform 1s;
-			transition: transform 0.5s;
-			-webkit-transform-style: preserve-3d;
-			transform-style: preserve-3d;
-
 			#welcome {
 				font-family: 'Berkshire Swash', cursive;
 			}
@@ -46,39 +38,13 @@ body {
 				left: 0;
 				width: 100%;
 				height: 100%;
-				-webkit-backface-visibility: hidden;
-				backface-visibility: hidden;
 
 				.sign-in {
 					background-color: #B84014;
 					color: white;
 				}
-
-				.fliper-btn {
-					color: #448D76;
-				}
 			}
 
-			.back {
-				-webkit-transform: rotateY(180deg);
-				transform: rotateY(180deg);
-
-				#signUp {
-					background-color: #B84014;
-					color: white;
-				}
-
-				.input-group-addon {
-					.fa {
-						width: 18px;
-					}
-				}
-			}
 		}
-	}
-
-	#card.flipped {
-		-webkit-transform: rotateY(180deg);
-		transform: rotateY(180deg);
 	}
 }
