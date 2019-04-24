@@ -6,7 +6,7 @@
 
 body {
 	height: 100%;
-	background-color: #2d373a;
+	background-color: $darkLight;
 }
 
 .navbar {
@@ -24,7 +24,7 @@ body {
 
 	.card-container {
 		background: $darkMain;
-		border-radius: $borderRadiusSmall;
+		border-radius: $borderRadiusMedium;
 		padding: 15px;
 
 		#card {

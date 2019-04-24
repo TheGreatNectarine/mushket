@@ -1,24 +1,35 @@
+// Colors
 $purpleMain: #696fff;
 $purpleDark: #35397a;
 $purpleLight: #9098ff;
+
 $background: #fff;
 $white: #fff;
 $black: #000;
+
 $green: #2DB241;
 $red: #E92A44;
+
 $grey: #777777;
-$grey2: #182838;
 $greyUltraLight: #ececec;
 
 $darkMain: #232b2d;
+$darkLight: #2d373a;
 
+
+// Borders
 $borderRadiusSmall: 4px;
+$borderRadiusMedium: 7px;
 
+
+// Other
 $shadowBlue: 0px 3px 10px rgba(186, 183, 255, 0.4);
 
 $headerHeightNormal: 65px;
 $headerHeightBig: 100px;
 
+
+// Media variables
 $min-xxs: 'min-width : 320px';
 $min-xs: 'min-width : 576px';
 $min-sm: 'min-width : 768px';
