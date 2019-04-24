@@ -18,13 +18,12 @@ router.post('/', async function(req, res) {
     if(stud.data != null) {
       resp = {role: 'stud'};
       sessions.attach(sessID, {role: 'stud', model: stud.data});
-      res.status(200).send(resp);
     } else {
       const teacher = await teachers.getByAccID(accId);
       resp = {role: 'teacher'};
       sessions.attach(sessID, {role: 'teacher', model: teacher.data});
-      res.status(200).send(resp);
     }
+    res.status(200).cookie('sessid', sessID).send(resp);
   }
 });
 
