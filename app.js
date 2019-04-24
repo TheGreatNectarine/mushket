@@ -1,4 +1,5 @@
 require("dotenv").config();
+const sessions = require('./middleware/sessions');
 
 const createError = require("http-errors");
 const express = require("express");
@@ -7,6 +8,10 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 
 const app = express();
+
+const setUpMiddleware = () => {
+	app.use(sessions.sessionMiddleware);
+}
 
 const setUpRoutes = () => {
 	// app.use(`/`, require("./api/index"));
@@ -18,7 +23,9 @@ const setUpRoutes = () => {
 	app.use(`api/v1/faculties`, require("./api/facultiesRouter"));
 	app.use(`api/v1/specializations`, require("./api/specializationsRouter"));
 	app.use(`api/v1/chairs`, require("./api/chairsRouter"));
+	app.use(`/api/v1/users`, require("./api/users"));
 };
+
 
 const setUpViews = () => {
 	app.set("views", path.join(__dirname, "views"));
@@ -51,9 +58,10 @@ const setUpErrorHandlers = () => {
 	});
 };
 
+setUpModules();
+setUpMiddleware();
 setUpRoutes();
 setUpViews();
-setUpModules();
 setUpErrorHandlers();
 
 module.exports = app;

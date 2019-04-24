@@ -1,8 +1,9 @@
 var express = require('express');
 var router = express.Router();
+const accs = require('../db/accounts-dao');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
+router.post('/', async function(req, res) {
+  const _ = await accs.accId(req.body.login, req.body.pwd);
   res.send('respond with a resource');
 });
 
