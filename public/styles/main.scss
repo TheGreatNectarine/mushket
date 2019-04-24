@@ -3,6 +3,7 @@
 
 @import "components/navbar";
 @import "components/footer";
+@import "components/login";
 
 
 * {
@@ -21,6 +22,7 @@ html {
 }
 
 body {
+	height: 100%;
 	font-family: 'Source Sans Pro', Source Sans Pro, sans-serif;
 	font-size: 16px;
 	font-weight: 400;

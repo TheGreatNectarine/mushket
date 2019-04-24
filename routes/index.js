@@ -7,9 +7,9 @@ router.get("/", function (req, res, next) {
 	res.render("pages/index");
 });
 
-router.get("/:id", async (req, res, next) => {
-	const results = await students.getByID(req.params.id);
-	console.log(results);
-	res.send('results');
-});
+// router.get("/:id", async (req, res, next) => {
+// 	const results = await students.getByID(req.params.id);
+// 	console.log(results);
+// 	res.send('results');
+// });
 module.exports = router;
