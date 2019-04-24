@@ -11,6 +11,7 @@ const app = express();
 const setUpRoutes = () => {
 	app.use(`/`, require("./routes/index"));
 	app.use(`/login`, require("./routes/login"));
+	app.use(`/courses`, require("./routes/courses"));
 	app.use(`api/v1/students`, require("./routes/studentsRouter"));
 	app.use(`api/v1/teachers`, require("./routes/teachersRouter"));
 	app.use(`api/v1/subjects`, require("./routes/subjectsRouter"));

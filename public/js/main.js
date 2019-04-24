@@ -1,15 +1,15 @@
 $(function () {
     const $nav = $('nav')
-    const $mainDiv = $('#main-div')
+    const $body = $('body')
 
     function addNavbarPadding () {
         if ($nav.hasClass('transparent'))
             return
-        $mainDiv.css('padding-top', $nav.outerHeight())
+        $body.css('padding-top', $nav.outerHeight())
     }
 
     function addFooterPadding () {
-        $mainDiv.css('padding-bottom', $('footer').outerHeight())
+        $body.css('padding-bottom', $('footer').outerHeight())
     }
 
 
