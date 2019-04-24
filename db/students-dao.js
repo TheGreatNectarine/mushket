@@ -22,7 +22,9 @@ module.exports = {
 	getStudentsSpecializationByID: async(id) => {
 		const client = await pool.connect();
 		try {
-			const result = await client.query("SELECT * FROM student WHERE acc_id = $1", [acc_id]);
+			const result = await client.query(`SELECT * FROM specialization 
+												WHERE id = 	(SELECT specialization_id FROM student
+															WHERE student.id = ${id});`);
 			return {success: true, data: result.rowCount !== 0 ? result.rows[0] : null};
 		} catch (e) {
 			return {success: false, err: e};
