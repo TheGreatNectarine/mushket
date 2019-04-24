@@ -10,6 +10,6 @@ router.get("/", function (req, res, next) {
 router.get("/:id", async (req, res, next) => {
 	const results = await students.getByID(req.params.id);
 	console.log(results);
-	res.send('results');
+	res.send(results);
 });
 module.exports = router;

@@ -9,7 +9,8 @@ const logger = require("morgan");
 const app = express();
 
 const setUpRoutes = () => {
-	app.use(`/`, require("./api/index"));
+	// app.use(`/`, require("./api/index"));
+	app.use(`/subjects`, require("./routes/main-page"));
 	app.use(`api/v1/students`, require("./api/studentsRouter"));
 	app.use(`api/v1/teachers`, require("./api/teachersRouter"));
 	app.use(`api/v1/subjects`, require("./api/subjectsRouter"));
