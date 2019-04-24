@@ -15,7 +15,7 @@ const setUpMiddleware = () => {
 
 const setUpRoutes = () => {
 	// app.use(`/`, require("./api/index"));
-	app.use(`/subjects`, require("./routes/main-page"));
+	app.use(`/subjects`, require("./routes/subjects-page"));
 	app.use(`api/v1/students`, require("./api/studentsRouter"));
 	app.use(`api/v1/teachers`, require("./api/teachersRouter"));
 	app.use(`api/v1/subjects`, require("./api/subjectsRouter"));
