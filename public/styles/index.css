@@ -1,3 +1,18 @@
+.sectionTop {
+  padding-top: 50px;
+}
+
+.serch-bar {
+  color: #fff;
+  font-size: 18px;
+}
+.serch-bar input[type=text] {
+  width: 100%;
+  padding: 5px;
+  margin: 0;
+  border: 1px solid #1b6590;
+}
+
 .sectionCourses {
   margin-top: 30px;
   margin-bottom: 30px;
@@ -5,9 +20,22 @@
 .sectionCourses__leftCol {
   background-color: #f3f3f3;
   border: 1px solid #dfdfdf;
-  height: 400px;
   position: sticky;
   top: 85px;
+  padding: 10px;
+}
+.sectionCourses__leftCol .filter-label {
+  font-size: 19px;
+  color: #35397a !important;
+  border-bottom: 1px solid #696A6D4D;
+  margin: 10px 0;
+}
+.sectionCourses__leftCol .btn-apply {
+  background: #696fff;
+  color: #fff;
+}
+.sectionCourses__leftCol .btn-apply:hover {
+  background: #35397a;
 }
 .sectionCourses__rightCol .coursesContainer {
   border-top: 1px solid #dfdfdf;
@@ -33,7 +61,7 @@
 }
 .sectionCourses__rightCol .course__info-name {
   font-weight: 700;
-  color: #232b2d;
+  color: 0px 3px 10px rgba(186, 183, 255, 0.4);
   font-size: 17px;
 }
 .sectionCourses__rightCol .course__info-rating {

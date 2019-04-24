@@ -1,5 +1,20 @@
 @import "common/variables";
 
+.sectionTop{
+  padding-top: 50px;
+}
+.serch-bar {
+  color: $white;
+  font-size: 18px;
+
+  input[type=text] {
+    width: 100%;
+    padding: 5px;
+    margin: 0;
+    border: 1px solid #1b6590;
+  }
+}
+
 .sectionCourses {
   margin-top: 30px;
   margin-bottom: 30px;
@@ -7,9 +22,25 @@
   &__leftCol {
     background-color: $greyUltraLight;
     border: 1px solid $greyLight;
-    height: 400px;
+    //height: 400px;
     position: sticky;
     top: $headerHeight + 15px;
+    padding: 10px;
+
+    .filter-label{
+      font-size: 19px;
+      color: $purpleDark!important;
+      border-bottom: 1px solid #696A6D4D;
+      margin: 10px 0;
+    }
+    .btn-apply {
+      background: $purpleMain;
+      color: $white;
+      &:hover{
+        background: $purpleDark;
+      }
+    }
+
   }
 
   &__rightCol {
@@ -43,7 +74,7 @@
 
         &-name {
           font-weight: 700;
-          color: $darkMain;
+          color: $shadowBlue;
           font-size: 17px;
         }
 
