@@ -1,12 +1,13 @@
-<% include ../common/page-top-layout.ejs %>
+<%- include('../common/page-top-layout.ejs', {classes:"transparent"}); %>
 
-<section>
+<link rel="stylesheet" type="text/css" href="styles/index.css">
+
+<section class="sectionTop">
     <div class="container">
-        HELLO THERE
-        <br>
-        BODY CONTENT
+        <div class="sectionTop-title">Hello there!</div>
     </div>
 </section>
+<div style="height: 1000px;"></div>
 
 <% include ../common/page-bottom-layout.ejs %>
 

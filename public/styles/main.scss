@@ -3,7 +3,7 @@
 
 @import "components/navbar";
 @import "components/footer";
-@import "components/login";
+@import "components/section-top";
 
 
 * {
@@ -22,7 +22,7 @@ html {
 }
 
 body {
-	height: 100%;
+	min-height: 100%;
 	font-family: 'Source Sans Pro', Source Sans Pro, sans-serif;
 	font-size: 16px;
 	font-weight: 400;
@@ -32,11 +32,10 @@ body {
 	background-color: $background;
 
 	position: relative;
-	min-height: 100%;
 	margin: 0;
 	padding: 0;
 }
 
 #main-div {
-	height: 100%;
+	min-height: 100%;
 }
