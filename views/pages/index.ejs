@@ -4,10 +4,39 @@
 
 <section class="sectionTop">
     <div class="container">
-        <div class="sectionTop-title">Hello there!</div>
+        <div class="sectionTop-title">Курси</div>
     </div>
 </section>
-<div style="height: 1000px;"></div>
+<section class="sectionCourses">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-5">
+                <div class="sectionCourses__leftCol">
+                    Фільтри
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-7">
+                <div class="sectionCourses__rightCol">
+                    <div class="coursesContainer">
+                        <% var courseExample = {
+                            "courseImageSrc": "/images/courses/course1.jpg",
+                            "courseInfoName": "Веб-орієнтовані системи",
+                            "courseInfoRating" : 5.0,
+                            "courseInfoDescription": "Курс про веб-орієнтовані системи",
+                            "courseInfoLector": "Олецький",
+                            "courseLink": "#",
+                            "lectorLink": "#"
+                        }%>
+                        <% for(var i=0; i < 10; i ++) {%>
+                            <%- include('../templates/course-template.ejs', {course: courseExample}); %>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 
 <% include ../common/page-bottom-layout.ejs %>
 
