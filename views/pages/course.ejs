@@ -20,7 +20,7 @@
             <div class="col-md-3">
                 <p class="lecturer-title">Викладачі</p>
                 <% locals.course.course_lecturers.forEach(function (lecturer) { %>
-                    <a href="/profile/lecturer/<%= lecturer.lecturer_id %>"
+                    <a href="/profile/<%= lecturer.lecturer_id %>"
                        class="lecturer-link"><%= lecturer.lecturer_name %></a>
                 <% }) %>
             </div>

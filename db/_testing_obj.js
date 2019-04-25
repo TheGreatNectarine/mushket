@@ -65,4 +65,11 @@ var courseExample = {
     ]
 }
 
-module.exports = {courseExample}
+var profileExample = {
+    "profile_name": "Олецький Олексій",
+    "profile_role": "Викладач",
+    "profile_faculty": "Факультет Інформатики",
+    "profile_imgSrc": "https://scontent.fiev17-1.fna.fbcdn.net/v/t31.0-8/12768331_474346659438640_54626311917894660_o.jpg?_nc_cat=103&_nc_ht=scontent.fiev17-1.fna&oh=162cb1db2f1565182a392afff0bd7bb9&oe=5D721B41"
+}
+
+module.exports = {courseExample, profileExample}
