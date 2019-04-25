@@ -9,8 +9,8 @@ const pool = new Pool({
 });
 
 module.exports.fetchOne = async (query, params=[]) => {
+	const client = await pool.connect();	
 	try {
-		const client = await pool.connect();
 		const result = await client.query(query, params);
 		return {success: true, data: result.rowCount !== 0 ? result.rows[0] : null};
 	} catch (e) {
@@ -21,8 +21,8 @@ module.exports.fetchOne = async (query, params=[]) => {
 }
 
 module.exports.fetchMany = async (query, params=[]) => {
+	const client = await pool.connect();
 	try {
-		const client = await pool.connect();
 		const result = await client.query(query, params);
 		return {success: true, data: result != null ? result.rows : []};
 	} catch (e) {
@@ -30,8 +30,8 @@ module.exports.fetchMany = async (query, params=[]) => {
 	} finally {
 		client.release();
 	}
-}
+};
 
 module.exports.fetchScalar = async (query, params=[], attribute) => {
 	return (await module.exports.fetchOne(query, params)[attribute]);
-}
+};
