@@ -1,17 +1,21 @@
-var sessData = {};
+var sessData = {}
 
-module.exports.sessionMiddleware = function(req, _, next) {
-    let sessid = req.cookies.sessid;
+module.exports.sessionMiddleware = function (req, res, next) {
+    let sessid = req.cookies.sessid
     if (sessid) {
-        req.user = sessData[sessid];        
+        res.locals.user = sessData[sessid]
     } else {
-        req.user = {
-            role : 'guest'
-        };
+        res.locals.user = {
+            role: 'guest',
+        }
     }
-    next();
+    next()
 }
 
-module.exports.attach = function(sessId, user) {
-    sessData[sessId] = user;
+module.exports.attach = function (sessId, user) {
+    sessData[sessId] = user
+}
+
+module.exports.detach = function (sessId) {
+    delete sessData[sessId]
 }

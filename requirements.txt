@@ -1,0 +1,4 @@
+trafaret
+trafaret-config
+aiohttp
+elasticsearch-async
