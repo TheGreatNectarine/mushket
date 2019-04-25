@@ -1,10 +1,9 @@
 @import "common/variables";
 @import "common/buttons";
-
+@import "components/stars";
 @import "components/navbar";
 @import "components/footer";
 @import "components/section-top";
-
 
 * {
 	box-sizing: border-box;
@@ -23,7 +22,7 @@ html {
 
 body {
 	min-height: 100%;
-	font-family: 'Source Sans Pro', Source Sans Pro, sans-serif;
+	font-family: "Open Sans", "Helvetica Neue", sans-serif;
 	font-size: 16px;
 	font-weight: 400;
 	line-height: 1.4;

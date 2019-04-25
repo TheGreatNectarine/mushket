@@ -1,0 +1,29 @@
+@import "../common/variables";
+
+.stars-container {
+	position: relative;
+	display: inline-block;
+	font-size: 18px;
+
+	.stars-empty, .stars-filled {
+		display: flex;
+	}
+
+	.stars-empty {
+		color: $greyUltraLight;
+	}
+
+	.stars-filled {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		color: #FFCB10;
+		overflow: hidden;
+	}
+
+	.fa-star {
+		margin: 0 2px;
+	}
+}

@@ -1,0 +1,46 @@
+.sectionTop .container {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.sectionTop .course-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.sectionTop .course__image {
+  flex: 0 0 40%;
+}
+.sectionTop .course__image img {
+  width: 100%;
+}
+.sectionTop .course__info {
+  flex: 0 0 60%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+}
+.sectionTop .course__info-name {
+  font-weight: 500;
+  color: #fff;
+  font-size: 30px;
+  margin-bottom: 15px;
+}
+.sectionTop .course__info-rating {
+  color: #fff;
+  font-weight: 500;
+}
+.sectionTop .course__info-rating .comments-count {
+  margin-left: 15px;
+}
+.sectionTop .lecturer-title {
+  font-weight: 400;
+  color: #dfdfdf;
+  font-size: 16px;
+}
+.sectionTop .lecturer-link {
+  color: white;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+/*# sourceMappingURL=course.css.map */

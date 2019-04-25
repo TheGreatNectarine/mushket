@@ -3,13 +3,30 @@
 <link rel="stylesheet" type="text/css" href="/styles/course.css">
 
 <section class="sectionTop">
-    <div class="container text-center">
-        <div class="sectionTop-title">-назва курсу-</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 course-wrapper">
+                <div class="course__image">
+                    <img src="<%= locals.course.courseImageSrc %>">
+                </div>
+                <div class="course__info">
+                    <div class="course__info-name"><%= locals.course.courseInfoName %></div>
+                    <div class="course__info-rating">
+                        <%- include('../templates/stars.ejs', {value: locals.course.courseInfoRating, max: 5}); %>
+                        <span class="comments-count"><%= locals.course.comments.length %> відгуків</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <p class="lecturer-title">Викладачі</p>
+                <a href="<%= locals.course.lectorLink %>" class="lecturer-link"><%= locals.course.courseInfoLector %></a>
+            </div>
+        </div>
     </div>
 </section>
 <section class="sectionCourses">
     <div class="container">
-
+        <div></div>
     </div>
 </section>
 

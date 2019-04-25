@@ -1,0 +1,12 @@
+<div class="stars-container">
+    <div class="stars-empty">
+        <% for(var i = 0; i < locals.max; i++) { %>
+            <span class="fa fa-star"></span>
+        <% } %>
+    </div>
+    <div class="stars-filled" style="width: <%= locals.value / locals.max * 100 %>%;">
+        <% for(var i = 0; i < locals.max; i++) { %>
+            <span class="fa fa-star"></span>
+        <% } %>
+    </div>
+</div>

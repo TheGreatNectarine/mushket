@@ -135,6 +135,30 @@
   color: #fff;
 }
 
+.stars-container {
+  position: relative;
+  display: inline-block;
+  font-size: 18px;
+}
+.stars-container .stars-empty, .stars-container .stars-filled {
+  display: flex;
+}
+.stars-container .stars-empty {
+  color: #f3f3f3;
+}
+.stars-container .stars-filled {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  color: #FFCB10;
+  overflow: hidden;
+}
+.stars-container .fa-star {
+  margin: 0 2px;
+}
+
 .navbar {
   transition-duration: 0.2s;
   padding: 15px 20px;
@@ -204,7 +228,7 @@ html {
 
 body {
   min-height: 100%;
-  font-family: "Source Sans Pro", Source Sans Pro, sans-serif;
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.4;

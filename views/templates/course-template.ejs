@@ -4,7 +4,10 @@
     </div>
     <div class="course__info">
         <a href="<%= locals.course.courseLink %>" class="course__info-name"><%= locals.course.courseInfoName %></a>
-        <div class="course__info-rating"><%= locals.course.courseInfoRating %></div>
+        <div class="course__info-rating">
+            <%- include('../templates/stars.ejs', {value: locals.course.courseInfoRating, max: 5}); %>
+            <span class="comments-count"> (<%= course.comments.length %> відгуків)</span>
+        </div>
         <div class="course__info-description"><%= locals.course.courseInfoDescription %></div>
         <a href="<%= locals.course.lectorLink %>" class="course__info-lector"><%= locals.course.courseInfoLector %></a>
     </div>

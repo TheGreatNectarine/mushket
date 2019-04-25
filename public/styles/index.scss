@@ -1,7 +1,6 @@
 @import "common/variables";
 
 .sectionTop {
-	//padding-top: 50px;
 
 	&-title {
 		text-align: center;
@@ -20,22 +19,24 @@
 			}
 		}
 	}
-}
 
-.search-container {
-	max-width: 600px;
-	margin: 70px auto 0;
+	.search-container {
+		max-width: 600px;
+		margin: 0 auto;
+		padding: 70px 0 20px;
 
-	.form-control {
-		height: 50px;
-		border-radius: 0;
-	}
+		.form-control {
+			height: 50px;
+			border-radius: $borderRadiusMedium 0 0 $borderRadiusMedium;
+			border-color: $purpleMain;
+		}
 
-	.btn {
-		border-radius: 0;
-		padding-left: 2rem;
-		padding-right: 2rem;
-		font-weight: 700;
+		.btn {
+			border-radius: 0 $borderRadiusMedium $borderRadiusMedium 0;
+			padding-left: 2rem;
+			padding-right: 2rem;
+			font-weight: 700;
+		}
 	}
 }
 
@@ -46,7 +47,7 @@
 	&__leftCol {
 		background-color: $greyUltraLight;
 		border: 1px solid $greyLight;
-		//height: 400px;
+		border-radius: $borderRadiusMedium;
 		position: sticky;
 		top: $headerHeight + 15px;
 		padding: 10px;
@@ -76,6 +77,8 @@
 
 			&__image {
 				flex: 0 0 35%;
+				border-radius: $borderRadiusMedium;
+				overflow: hidden;
 
 				img {
 					width: 100%;
@@ -96,7 +99,14 @@
 				}
 
 				&-rating {
+					padding: 0 0 5px;
 					color: $grey;
+					font-size: 18px;
+
+					.comments-count {
+						font-size: 14px;
+						margin-left: 10px;
+					}
 				}
 
 				&-description {
