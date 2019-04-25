@@ -51,10 +51,10 @@
                     <div class="comments-container">
                         <% locals.reviews.forEach(function (review) { %>
                             <div class="review-wrapper">
-                                <div class="review-title"><%= review.title %></div>
+                                <div class="review-title"><%= review.review_title %></div>
                                 <%- include('../templates/stars.ejs', {value: review.review_mark, max: 5}); %>
                                 <div class="review-text"><%= review.review_text %></div>
-                                <%- include('../templates/profile_preview.ejs', {name: review.review_profile.profile_name, imgSrc: review.review_profile.profile_imgSrc}); %>
+                                <%- include('../templates/profile_preview.ejs', {name: review.profile_name, imgSrc: review.photo_link}); %>
                             </div>
                         <% }) %>
                     </div>

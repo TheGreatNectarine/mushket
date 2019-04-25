@@ -84,15 +84,15 @@ const getSubjectsByStudentIDAndSubjectType = async (id, type) => {
 const getReviewsBySubjectId = async (id) => {
 	const query = `
 	(
-		SELECT review_text as reviewText, review_mark as reviewMark, submit_date as submitDate, teacher.full_name as reviewerName, 'teacher' as reviewerRole
+		SELECT review_text, title as review_title, review_mark, submit_date, teacher.full_name, teacher.photo_link, 'teacher' as review_role
 		FROM (review INNER JOIN teacher ON review.teacher_id = teacher.id)
 		WHERE review.subject_id = ${id}
 			UNION
-		SELECT review_text as reviewText, review_mark as reviewMark, submit_date as submitDate, student.full_name as reviewerName, 'student' as reviewerRole
+		SELECT review_text, title as review_title, review_mark, submit_date, student.full_name, student.photo_link, 'student' as review_role
 		FROM (review INNER JOIN student ON review.student_id = student.id)
 		WHERE review.subject_id = ${id}
 	)
-		ORDER BY submitDate;`
+		ORDER BY submit_date;`
 	return pool.fetchMany(query);
 }
 

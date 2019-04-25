@@ -10,6 +10,9 @@ router.get('/:id', async function (req, res, next) {
     } else {
         const teachers = (await subjects.getTeachersBySubjectId(subjID))
         const reviews = (await subjects.getReviewsBySubjectId(subjID))
+
+        console.log(teachers)
+        console.log(reviews)
         res.render('pages/course', {
             course: subj.data,
             teachers: teachers.data,
