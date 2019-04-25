@@ -1,16 +1,32 @@
-.sectionTop {
-  padding-top: 50px;
+.sectionTop-title {
+  text-align: center;
+  font-size: 45px;
+  font-weight: 600;
+  background: linear-gradient(to right, #eaebff 0%, #d7c7ff 25%, #d7c7ff 50%, #eaebff 75%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 4s linear infinite;
+}
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
 }
 
-.serch-bar {
-  color: #fff;
-  font-size: 18px;
+.search-container {
+  max-width: 600px;
+  margin: 70px auto 0;
 }
-.serch-bar input[type=text] {
-  width: 100%;
-  padding: 5px;
-  margin: 0;
-  border: 1px solid #1b6590;
+.search-container .form-control {
+  height: 50px;
+  border-radius: 0;
+}
+.search-container .btn {
+  border-radius: 0;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  font-weight: 700;
 }
 
 .sectionCourses {
@@ -26,16 +42,10 @@
 }
 .sectionCourses__leftCol .filter-label {
   font-size: 19px;
-  color: #35397a !important;
+  color: #232b2d !important;
   border-bottom: 1px solid #696A6D4D;
+  font-weight: 700;
   margin: 10px 0;
-}
-.sectionCourses__leftCol .btn-apply {
-  background: #696fff;
-  color: #fff;
-}
-.sectionCourses__leftCol .btn-apply:hover {
-  background: #35397a;
 }
 .sectionCourses__rightCol .coursesContainer {
   border-top: 1px solid #dfdfdf;
@@ -61,7 +71,7 @@
 }
 .sectionCourses__rightCol .course__info-name {
   font-weight: 700;
-  color: 0px 3px 10px rgba(186, 183, 255, 0.4);
+  color: #232b2d;
   font-size: 17px;
 }
 .sectionCourses__rightCol .course__info-rating {

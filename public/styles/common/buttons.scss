@@ -147,3 +147,14 @@
 		transform: translate(5px, -50%);
 	}
 }
+
+
+.btn-purple {
+	background-color: $purpleMain;
+	color: $white;
+
+	&:hover {
+		background: $purpleDark;
+		color: $white;
+	}
+}

@@ -1,17 +1,21 @@
 <%- include('../common/page-top-layout.ejs', {classes:"transparent"}); %>
 
-<link rel="stylesheet" type="text/css" href="styles/index.css">
+<link rel="stylesheet" type="text/css" href="/styles/index.css">
 
 <section class="sectionTop">
     <div class="container text-center">
-        <div class="sectionTop-title">Курси</div>
-        <div class="serch-bar row justify-content-sm-center no-gutters">
-            <input class="col-sm-12 col-md-5" type="text" placeholder="Введіть назву курсу" name="search"/>
-            <button class="col col-sm-2 col-md-1 offset-md-1 btn btn-light">Знайти</button>
+        <div class="sectionTop-title">Не можеш обрати на що записатися?</div>
+
+        <div class="input-group mb-3 search-container">
+            <input type="text" class="form-control" placeholder="Знайти предмет">
+            <div class="input-group-append">
+                <button class="btn btn-purple" type="button">ШУКАТИ</button>
+            </div>
         </div>
     </div>
 </section>
 <section class="sectionCourses">
+
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-5">
@@ -45,7 +49,7 @@
                     <div class="filter-label">Кредити</div>
                     <div class="filter-label">Триместр</div>
                     <div class="filter-label">Тип</div>
-                    <button class="btn btn-block btn-apply">Застосувати</button>
+                    <button class="btn btn-block btn-purple">Застосувати</button>
                 </div>
             </div>
             <div class="col-lg-8 col-md-7">
@@ -57,8 +61,8 @@
                             "courseInfoRating" : 5.0,
                             "courseInfoDescription": "Курс про веб-орієнтовані системи",
                             "courseInfoLector": "Олецький",
-                            "courseLink": "#",
-                            "lectorLink": "#"
+                            "courseLink": "/course/0",
+                            "lectorLink": "/profile/lecturer/0"
                         }%>
                         <% for(var i=0; i < 10; i ++) {%>
                             <%- include('../templates/course-template.ejs', {course: courseExample}); %>

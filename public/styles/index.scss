@@ -1,100 +1,117 @@
 @import "common/variables";
 
-.sectionTop{
-  padding-top: 50px;
-}
-.serch-bar {
-  color: $white;
-  font-size: 18px;
+.sectionTop {
+	//padding-top: 50px;
 
-  input[type=text] {
-    width: 100%;
-    padding: 5px;
-    margin: 0;
-    border: 1px solid #1b6590;
-  }
+	&-title {
+		text-align: center;
+		font-size: 45px;
+		font-weight: 600;
+
+		background: linear-gradient(to right, #eaebff 0%, #d7c7ff 25%, #d7c7ff 50%, #eaebff 75%);
+		background-size: 200% auto;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+
+		animation: shine 4s linear infinite;
+		@keyframes shine {
+			to {
+				background-position: 200% center;
+			}
+		}
+	}
+}
+
+.search-container {
+	max-width: 600px;
+	margin: 70px auto 0;
+
+	.form-control {
+		height: 50px;
+		border-radius: 0;
+	}
+
+	.btn {
+		border-radius: 0;
+		padding-left: 2rem;
+		padding-right: 2rem;
+		font-weight: 700;
+	}
 }
 
 .sectionCourses {
-  margin-top: 30px;
-  margin-bottom: 30px;
+	margin-top: 30px;
+	margin-bottom: 30px;
 
-  &__leftCol {
-    background-color: $greyUltraLight;
-    border: 1px solid $greyLight;
-    //height: 400px;
-    position: sticky;
-    top: $headerHeight + 15px;
-    padding: 10px;
+	&__leftCol {
+		background-color: $greyUltraLight;
+		border: 1px solid $greyLight;
+		//height: 400px;
+		position: sticky;
+		top: $headerHeight + 15px;
+		padding: 10px;
 
-    .filter-label{
-      font-size: 19px;
-      color: $purpleDark!important;
-      border-bottom: 1px solid #696A6D4D;
-      margin: 10px 0;
-    }
-    .btn-apply {
-      background: $purpleMain;
-      color: $white;
-      &:hover{
-        background: $purpleDark;
-      }
-    }
+		.filter-label {
+			font-size: 19px;
+			color: $darkMain !important;
+			border-bottom: 1px solid #696A6D4D;
+			font-weight: 700;
+			margin: 10px 0;
+		}
+	}
 
-  }
+	&__rightCol {
+		.coursesContainer {
+			border-top: 1px solid $greyLight;
+		}
 
-  &__rightCol {
-    .coursesContainer {
-      border-top: 1px solid $greyLight;
-    }
+		.course {
+			&-wrapper {
+				display: flex;
+				justify-content: space-between;
+				align-items: flex-start;
+				padding: 20px 0;
+				border-bottom: 1px solid $greyLight;
+			}
 
-    .course {
-      &-wrapper {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        padding: 20px 0;
-        border-bottom: 1px solid $greyLight;;
-      }
+			&__image {
+				flex: 0 0 35%;
 
-      &__image {
-        flex: 0 0 35%;
+				img {
+					width: 100%;
+				}
+			}
 
-        img {
-          width: 100%;
-        }
-      }
+			&__info {
+				flex: 0 0 65%;
 
-      &__info {
-        flex: 0 0 65%;
+				display: flex;
+				flex-direction: column;
+				padding-left: 20px;
 
-        display: flex;
-        flex-direction: column;
-        padding-left: 20px;
+				&-name {
+					font-weight: 700;
+					color: $darkMain;
+					font-size: 17px;
+				}
 
-        &-name {
-          font-weight: 700;
-          color: $shadowBlue;
-          font-size: 17px;
-        }
+				&-rating {
+					color: $grey;
+				}
 
-        &-rating {
-          color: $grey;
-        }
+				&-description {
+					font-size: 14px;
+					color: $grey
+				}
 
-        &-description {
-          font-size: 14px;
-          color: $grey
-        }
-
-        &-lector {
-          font-size: 13px;
-          font-weight: 700;
-          text-transform: uppercase;
-          color: $darkMain;
-          margin-top: 10px;
-        }
-      }
-    }
-  }
+				&-lector {
+					font-size: 13px;
+					font-weight: 700;
+					text-transform: uppercase;
+					color: $darkMain;
+					margin-top: 10px;
+				}
+			}
+		}
+	}
 }
