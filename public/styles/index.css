@@ -1,0 +1,102 @@
+.sectionTop-title {
+  text-align: center;
+  font-size: 45px;
+  font-weight: 600;
+  background: linear-gradient(to right, #7955ff 0%, #d7c7ff 25%, #d7c7ff 50%, #7955ff 75%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 4s linear infinite;
+}
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+.sectionTop .search-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 70px 0 20px;
+}
+.sectionTop .search-container .form-control {
+  height: 50px;
+  border-radius: 7px 0 0 7px;
+  border-color: #7274ee;
+}
+.sectionTop .search-container .btn {
+  border-radius: 0 7px 7px 0;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  font-weight: 700;
+}
+
+.sectionCourses {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.sectionCourses__leftCol {
+  background-color: #f3f3f3;
+  border: 1px solid #dfdfdf;
+  border-radius: 7px;
+  position: sticky;
+  top: 85px;
+  padding: 10px;
+}
+.sectionCourses__leftCol .filter-label {
+  font-size: 19px;
+  color: #232b2d !important;
+  border-bottom: 1px solid #696A6D4D;
+  font-weight: 700;
+  margin: 10px 0;
+}
+.sectionCourses__rightCol .coursesContainer {
+  border-top: 1px solid #dfdfdf;
+}
+.sectionCourses__rightCol .course-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 0;
+  border-bottom: 1px solid #dfdfdf;
+}
+.sectionCourses__rightCol .course__image {
+  flex: 0 0 35%;
+  border-radius: 7px;
+  overflow: hidden;
+}
+.sectionCourses__rightCol .course__image img {
+  width: 100%;
+}
+.sectionCourses__rightCol .course__info {
+  flex: 0 0 65%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+}
+.sectionCourses__rightCol .course__info-name {
+  font-weight: 700;
+  color: #232b2d;
+  font-size: 17px;
+}
+.sectionCourses__rightCol .course__info-rating {
+  padding: 0 0 5px;
+  color: #777777;
+  font-size: 18px;
+}
+.sectionCourses__rightCol .course__info-rating .comments-count {
+  font-size: 14px;
+  margin-left: 10px;
+}
+.sectionCourses__rightCol .course__info-description {
+  font-size: 14px;
+  color: #777777;
+}
+.sectionCourses__rightCol .course__info-lector {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #232b2d;
+  margin-top: 10px;
+}
+
+/*# sourceMappingURL=index.css.map */

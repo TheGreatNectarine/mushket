@@ -1,0 +1,90 @@
+.sectionTop .container {
+  padding-top: 40px;
+  padding-bottom: 30px;
+}
+.sectionTop .course-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.sectionTop .course__image {
+  flex: 0 0 40%;
+  border-radius: 7px;
+  overflow: hidden;
+}
+.sectionTop .course__image img {
+  width: 100%;
+}
+.sectionTop .course__info {
+  flex: 0 0 60%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+}
+.sectionTop .course__info-name {
+  font-weight: 500;
+  color: #fff;
+  font-size: 30px;
+  margin-bottom: 15px;
+}
+.sectionTop .course__info-rating {
+  color: #fff;
+  font-weight: 500;
+}
+.sectionTop .course__info-rating .comments-count {
+  margin-left: 15px;
+}
+.sectionTop .lecturer-title {
+  font-weight: 400;
+  color: #dfdfdf;
+  font-size: 16px;
+}
+.sectionTop .lecturer-link {
+  color: white;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.sectionCourseInfo .block {
+  padding: 30px 0;
+  border-bottom: 1px solid #dfdfdf;
+}
+.sectionCourseInfo .block__description .description-text {
+  font-size: 16px;
+}
+.sectionCourseInfo .block__rating .rating-num {
+  font-size: 70px;
+  font-weight: 600;
+}
+.sectionCourseInfo .block__rating .rating-num-max {
+  font-size: 30px;
+  font-weight: 400;
+}
+.sectionCourseInfo .block .comments-container .review-wrapper {
+  background-color: #f3f3f3;
+  padding: 20px 30px;
+  margin-top: 30px;
+  border-radius: 7px;
+}
+.sectionCourseInfo .block .comments-container .review-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.sectionCourseInfo .block .comments-container .review-text {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+.sectionCourseInfo .block__sendReview {
+  border: none;
+  position: sticky;
+  top: 80px;
+}
+.sectionCourseInfo .block__sendReview .review-form {
+  background-color: #f3f3f3;
+  padding: 15px 20px;
+  margin-top: 30px;
+  border-radius: 7px;
+}
+
+/*# sourceMappingURL=course.css.map */

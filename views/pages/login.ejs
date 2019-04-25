@@ -1,0 +1,34 @@
+<%- include('../common/page-top-layout.ejs', {classes:"transparent"}); %>
+
+<link rel="stylesheet" type="text/css" href="/styles/login.css">
+
+<div class="login-container">
+    <div class="text-center">
+        <section class="card-container">
+            <div id="card">
+                <figure class="front">
+                    <h1 id="welcome">Welcome!</h1>
+                    <h6 id="error" class="text-danger" style="visibility: hidden; margin-top: 0">Неправильний логін або
+                        пароль. Спробуйте ще раз або зареєструйтеся.</h6>
+                    <form class="form" role="form">
+                        <div class="form-group">
+<!--                            <label class="sr-only" for="signin-username">Логін</label>-->
+                            <input type="text" class="form-control" id="signin-username" placeholder="Логін"
+                                   required>
+                        </div>
+                        <div class="form-group">
+<!--                            <label class="sr-only" for="signin-password">Пароль</label>-->
+                            <input type="password" class="form-control" id="signin-password" placeholder="Пароль"
+                                   required>
+                        </div>
+                    </form>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-default btn-block sign-in" id="signIn">Вхід</button>
+                    </div>
+                </figure>
+            </div>
+        </section>
+    </div>
+</div>
+
+<% include ../common/page-bottom-layout.ejs %>

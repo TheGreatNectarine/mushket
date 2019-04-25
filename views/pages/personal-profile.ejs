@@ -1,0 +1,29 @@
+<%- include('../common/page-top-layout.ejs', {classes:"transparent"}); %>
+
+<link rel="stylesheet" type="text/css" href="/styles/profile.css">
+
+<section class="sectionTop">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 profile-wrapper">
+                <div class="profile__image">
+                    <img src="<%= locals.profile.profile_imgSrc %>">
+                </div>
+                <div class="profile__info">
+                    <div class="profile__info-name"><%= locals.profile.profile_name %></div>
+                    <div class="profile__info-role"><%= locals.profile.profile_role %></div>
+                    <div class="profile__info-faculty"><%= locals.profile.profile_faculty %></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="container">
+
+    </div>
+</section>
+
+<% include ../common/page-bottom-layout.ejs %>
+
+

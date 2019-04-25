@@ -1,0 +1,127 @@
+@import "common/variables";
+
+.sectionTop {
+
+	&-title {
+		text-align: center;
+		font-size: 45px;
+		font-weight: 600;
+
+		background: linear-gradient(to right, #7955ff 0%, #d7c7ff 25%, #d7c7ff 50%, #7955ff 75%);
+		background-size: 200% auto;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+
+		animation: shine 4s linear infinite;
+		@keyframes shine {
+			to {
+				background-position: 200% center;
+			}
+		}
+	}
+
+	.search-container {
+		max-width: 600px;
+		margin: 0 auto;
+		padding: 70px 0 20px;
+
+		.form-control {
+			height: 50px;
+			border-radius: $borderRadiusMedium 0 0 $borderRadiusMedium;
+			border-color: $purpleMain;
+		}
+
+		.btn {
+			border-radius: 0 $borderRadiusMedium $borderRadiusMedium 0;
+			padding-left: 2rem;
+			padding-right: 2rem;
+			font-weight: 700;
+		}
+	}
+}
+
+.sectionCourses {
+	margin-top: 30px;
+	margin-bottom: 30px;
+
+	&__leftCol {
+		background-color: $greyUltraLight;
+		border: 1px solid $greyLight;
+		border-radius: $borderRadiusMedium;
+		position: sticky;
+		top: $headerHeight + 15px;
+		padding: 10px;
+
+		.filter-label {
+			font-size: 19px;
+			color: $darkMain !important;
+			border-bottom: 1px solid #696A6D4D;
+			font-weight: 700;
+			margin: 10px 0;
+		}
+	}
+
+	&__rightCol {
+		.coursesContainer {
+			border-top: 1px solid $greyLight;
+		}
+
+		.course {
+			&-wrapper {
+				display: flex;
+				justify-content: space-between;
+				align-items: flex-start;
+				padding: 20px 0;
+				border-bottom: 1px solid $greyLight;
+			}
+
+			&__image {
+				flex: 0 0 35%;
+				border-radius: $borderRadiusMedium;
+				overflow: hidden;
+
+				img {
+					width: 100%;
+				}
+			}
+
+			&__info {
+				flex: 0 0 65%;
+
+				display: flex;
+				flex-direction: column;
+				padding-left: 20px;
+
+				&-name {
+					font-weight: 700;
+					color: $darkMain;
+					font-size: 17px;
+				}
+
+				&-rating {
+					padding: 0 0 5px;
+					color: $grey;
+					font-size: 18px;
+
+					.comments-count {
+						font-size: 14px;
+						margin-left: 10px;
+					}
+				}
+
+				&-description {
+					font-size: 14px;
+					color: $grey
+				}
+
+				&-lector {
+					font-size: 13px;
+					font-weight: 700;
+					text-transform: uppercase;
+					color: $darkMain;
+					margin-top: 10px;
+				}
+			}
+		}
+	}
+}

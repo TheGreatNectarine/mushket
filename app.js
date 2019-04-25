@@ -15,17 +15,19 @@ const setUpMiddleware = () => {
 
 const setUpRoutes = () => {
 	app.use(`/`, require("./routes/index"));
+	app.use(`/login`, require("./routes/login"));
+	app.use(`/profile`, require("./routes/profile"));
+	app.use(`/course`, require("./routes/course"));
+	app.use(`api/v1/students`, require("./routes/studentsRouter"));
+	app.use(`api/v1/teachers`, require("./routes/teachersRouter"));
+	app.use(`api/v1/subjects`, require("./routes/subjectsRouter"));
+	app.use(`api/v1/tags`, require("./routes/tagsRouter"));
+	app.use(`api/v1/faculties`, require("./routes/facultiesRouter"));
+	app.use(`api/v1/specializations`, require("./routes/specializationsRouter"));
+	app.use(`api/v1/chairs`, require("./routes/chairsRouter"));
 	app.use(`/subjects`, require("./routes/subjects-page"));
-	app.use(`api/v1/students`, require("./api/studentsRouter"));
-	app.use(`api/v1/teachers`, require("./api/teachersRouter"));
-	app.use(`api/v1/subjects`, require("./api/subjectsRouter"));
-	app.use(`api/v1/tags`, require("./api/tagsRouter"));
-	app.use(`api/v1/faculties`, require("./api/facultiesRouter"));
-	app.use(`api/v1/specializations`, require("./api/specializationsRouter"));
-	app.use(`api/v1/chairs`, require("./api/chairsRouter"));
 	app.use(`/api/v1/users`, require("./api/users"));
 };
-
 
 const setUpViews = () => {
 	app.set("views", path.join(__dirname, "views"));
@@ -54,7 +56,7 @@ const setUpErrorHandlers = () => {
 
 		// render the error page
 		res.status(err.status || 500);
-		res.render("error");
+		res.render("pages/error");
 	});
 };
 

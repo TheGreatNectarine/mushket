@@ -1,0 +1,160 @@
+@import "variables";
+
+.button {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	border: none;
+
+	max-width: 240px;
+	min-width: 180px;
+	min-height: 40px;
+
+	text-decoration: none;
+	padding: 6px 20px;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 1.1;
+	background-color: $purpleMain;
+	transition-duration: 0.3s;
+	cursor: pointer;
+	color: $white;
+	z-index: 1;
+	border-radius: $borderRadiusSmall;
+
+	box-shadow: 0px 5px 20px rgba(49, 121, 255, 0.4);
+
+	&.small {
+		min-height: 30px;
+		max-width: 140px;
+		min-width: 110px;
+		padding: 6px 5px;
+		font-size: 15px;
+		font-weight: 300;
+		text-transform: uppercase;
+		box-shadow: 0px 5px 10px rgba(49, 121, 255, 0.2);
+	}
+
+	.arrow {
+		display: none;
+	}
+
+	&.button--witharrow {
+		padding-right: 70px + 10px;
+		max-width: 310px;
+
+		&:before {
+			content: '';
+			position: absolute;
+			height: 100%;
+			width: 70px;
+			top: 0;
+			right: 0;
+			transition-duration: 0.3s;
+			background-color: $purpleDark;
+			z-index: -1;
+		}
+
+		&:after {
+			content: '';
+			width: 25px;
+			height: 12px;
+			background: url('../images/common/button-arrow.png') no-repeat center;
+			background-size: 100%;
+			position: absolute;
+			top: 50%;
+			right: 22px;
+			transform: translateY(-50%);
+			transition-duration: 0.3s;
+		}
+	}
+
+	&:hover {
+		text-decoration: none;
+		box-shadow: none;
+		color: $white;
+		transform: scale(0.98);
+		background-color: $purpleDark;
+
+		&.button--witharrow {
+			background-color: $purpleMain;
+
+			&:before {
+				width: 100%;
+				z-index: -1;
+			}
+
+			&:after {
+				transform: translate(8px, -50%);
+			}
+		}
+	}
+
+	&:active {
+		transform: scale(0.95);
+	}
+}
+
+@media screen and ($max-md) {
+	.button {
+		min-height: 60px;
+		font-size: 19px;
+	}
+}
+
+@media screen and ($max-xs) {
+	.button {
+		min-height: 50px;
+		font-size: 18px;
+		padding-right: 10px !important;
+		width: auto;
+
+		&:after, &:before {
+			display: none;
+		}
+
+		&:hover {
+			background-color: $purpleDark !important;
+		}
+
+		&.button--witharrow {
+			max-width: 240px;
+		}
+	}
+}
+
+.learnmore-link {
+	font-weight: 600;
+	position: relative;
+	display: inline-block;
+
+	&:after {
+		content: '';
+		width: 1em;
+		height: 0.5em;
+		background: url('../images/common/button-arrow-blue.png') no-repeat center;
+		background-size: 100%;
+		position: absolute;
+		top: 50%;
+		right: -30px;
+		transform: translateY(-50%);
+		transition-duration: 0.3s;
+	}
+
+	&:hover:after {
+		transform: translate(5px, -50%);
+	}
+}
+
+
+.btn-purple {
+	background-color: $purpleMain;
+	color: $white;
+
+	&:hover {
+		background: $purpleDark;
+		color: $white;
+	}
+}

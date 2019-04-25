@@ -14,6 +14,4 @@ router.get("/:id/subjects", (req, res, next) => {
 
 });
 
-
-
 module.exports = router;

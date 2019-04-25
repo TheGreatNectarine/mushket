@@ -1,0 +1,101 @@
+<%- include('../common/page-top-layout.ejs', {classes:"transparent"}); %>
+
+<link rel="stylesheet" type="text/css" href="/styles/course.css">
+
+<section class="sectionTop">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 course-wrapper">
+                <div class="course__image">
+                    <img src="<%= locals.course.course_imgSrc %>">
+                </div>
+                <div class="course__info">
+                    <div class="course__info-name"><%= locals.course.course_name %></div>
+                    <div class="course__info-rating">
+                        <%- include('../templates/stars.ejs', {value: locals.course.course_rating, max: 5}); %>
+                        <span class="comments-count"><%= locals.course.course_reviews.length %> відгуків</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <p class="lecturer-title">Викладачі</p>
+                <% locals.course.course_lecturers.forEach(function (lecturer) { %>
+                    <a href="/profile/<%= lecturer.lecturer_id %>"
+                       class="lecturer-link"><%= lecturer.lecturer_name %></a>
+                <% }) %>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="sectionCourseInfo">
+    <div class="container">
+        <div class="block block__description">
+            <h3>Опис курсу:</h3>
+            <div class="description-text"><%= locals.course.course_description %></div>
+
+            <h4 style="margin-top: 30px">Кредити: <%= course.course_credits %></h4>
+        </div>
+
+        <div class="block block__rating">
+            <h3>Рейтинг курсу:</h3>
+            <div class="rating-num"><%= locals.course.course_rating %><span class="rating-num-max">&nbsp;/&nbsp;5</span>
+            </div>
+            <%- include('../templates/stars.ejs', {value: locals.course.course_rating, max: 5}); %>
+        </div>
+
+        <div class="row">
+            <div class="col-xl-8 col-md-7">
+                <div class="block block__comments">
+                    <h3>Відгуки:</h3>
+
+                    <div class="comments-container">
+                        <% locals.course.course_reviews.forEach(function (review) { %>
+                            <div class="review-wrapper">
+                                <div class="review-title"><%= review.review_title %></div>
+                                <%- include('../templates/stars.ejs', {value: review.review_rating, max: 5}); %>
+                                <div class="review-text"><%= review.review_text %></div>
+                                <%- include('../templates/profile_preview.ejs', {name: review.review_profile.profile_name, imgSrc: review.review_profile.profile_imgSrc}); %>
+                            </div>
+                        <% }) %>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-md-5">
+                <div class="block block__sendReview">
+                    <h3>Залишити відгук:</h3>
+
+                    <form class="review-form">
+                        <div class="form-group">
+                            <label for="reviewForm-title">
+                                Заголовок відгуку
+                            </label>
+                            <input id="reviewForm-title" class="form-control" name="title" type="text"
+                                   placeholder="Заголовок відгуку">
+                        </div>
+                        <div class="form-group">
+                            <label for="reviewForm-details">
+                                Деталі відгуку
+                            </label>
+                            <textarea id="reviewForm-details" class="form-control" name="details"
+                                      placeholder="Деталі відгуку"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="reviewForm-rating">
+                                Оцінка курсу (від 1 до 5)
+                            </label>
+                            <input id="reviewForm-rating" class="form-control" name="rating" type="number" min="1.0"
+                                   max="5.0"
+                                   placeholder="Оцінка курсу (від 1 до 5)">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Опублікувати відгук</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<% include ../common/page-bottom-layout.ejs %>
+
+

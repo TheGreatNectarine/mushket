@@ -1,0 +1,52 @@
+@import "common/variables";
+
+#main-div {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	background-color: $darkLight;
+}
+
+.navbar {
+	background: $darkMain !important;
+}
+
+.login-container {
+	width: 100%;
+	height: 100%;
+	justify-items: center;
+	display: grid;
+	align-items: center;
+	margin: auto;
+	color: $white;
+
+	.card-container {
+		background: $darkMain;
+		border-radius: $borderRadiusMedium;
+		padding: 25px 15px;
+
+		#card {
+			#welcome {
+				font-family: 'Berkshire Swash', cursive;
+			}
+
+			figure {
+				display: block;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+
+				.sign-in {
+					background-color: #B84014;
+					color: white;
+					font-size: 20px;
+				}
+			}
+		}
+	}
+}
+
+

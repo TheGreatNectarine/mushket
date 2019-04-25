@@ -1,0 +1,278 @@
+.button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: none;
+  max-width: 240px;
+  min-width: 180px;
+  min-height: 40px;
+  text-decoration: none;
+  padding: 6px 20px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.1;
+  background-color: #7274ee;
+  transition-duration: 0.3s;
+  cursor: pointer;
+  color: #fff;
+  z-index: 1;
+  border-radius: 4px;
+  box-shadow: 0px 5px 20px rgba(49, 121, 255, 0.4);
+}
+.button.small {
+  min-height: 30px;
+  max-width: 140px;
+  min-width: 110px;
+  padding: 6px 5px;
+  font-size: 15px;
+  font-weight: 300;
+  text-transform: uppercase;
+  box-shadow: 0px 5px 10px rgba(49, 121, 255, 0.2);
+}
+.button .arrow {
+  display: none;
+}
+.button.button--witharrow {
+  padding-right: 80px;
+  max-width: 310px;
+}
+.button.button--witharrow:before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 70px;
+  top: 0;
+  right: 0;
+  transition-duration: 0.3s;
+  background-color: #5e64d8;
+  z-index: -1;
+}
+.button.button--witharrow:after {
+  content: "";
+  width: 25px;
+  height: 12px;
+  background: url("../images/common/button-arrow.png") no-repeat center;
+  background-size: 100%;
+  position: absolute;
+  top: 50%;
+  right: 22px;
+  transform: translateY(-50%);
+  transition-duration: 0.3s;
+}
+.button:hover {
+  text-decoration: none;
+  box-shadow: none;
+  color: #fff;
+  transform: scale(0.98);
+  background-color: #5e64d8;
+}
+.button:hover.button--witharrow {
+  background-color: #7274ee;
+}
+.button:hover.button--witharrow:before {
+  width: 100%;
+  z-index: -1;
+}
+.button:hover.button--witharrow:after {
+  transform: translate(8px, -50%);
+}
+.button:active {
+  transform: scale(0.95);
+}
+
+@media screen and (max-width : 991px) {
+  .button {
+    min-height: 60px;
+    font-size: 19px;
+  }
+}
+@media screen and (max-width : 576px) {
+  .button {
+    min-height: 50px;
+    font-size: 18px;
+    padding-right: 10px !important;
+    width: auto;
+  }
+  .button:after, .button:before {
+    display: none;
+  }
+  .button:hover {
+    background-color: #5e64d8 !important;
+  }
+  .button.button--witharrow {
+    max-width: 240px;
+  }
+}
+.learnmore-link {
+  font-weight: 600;
+  position: relative;
+  display: inline-block;
+}
+.learnmore-link:after {
+  content: "";
+  width: 1em;
+  height: 0.5em;
+  background: url("../images/common/button-arrow-blue.png") no-repeat center;
+  background-size: 100%;
+  position: absolute;
+  top: 50%;
+  right: -30px;
+  transform: translateY(-50%);
+  transition-duration: 0.3s;
+}
+.learnmore-link:hover:after {
+  transform: translate(5px, -50%);
+}
+
+.btn-purple {
+  background-color: #7274ee;
+  color: #fff;
+}
+.btn-purple:hover {
+  background: #5e64d8;
+  color: #fff;
+}
+
+.stars-container {
+  position: relative;
+  display: inline-block;
+  font-size: 18px;
+}
+.stars-container .stars-empty, .stars-container .stars-filled {
+  display: flex;
+}
+.stars-container .stars-empty {
+  color: #f3f3f3;
+}
+.stars-container .stars-filled {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  color: #FFCB10;
+  overflow: hidden;
+}
+.stars-container .fa-star {
+  margin: 0 2px;
+}
+
+.navbar {
+  transition-duration: 0.2s;
+  padding: 15px 20px;
+  background-color: white;
+  color: #000;
+  box-shadow: 0 2px 15px 0 rgba(70, 68, 81, 0.4);
+}
+.navbar.transparent:not(.scrolled) {
+  color: #fff;
+  background: none;
+  box-shadow: none;
+}
+.navbar.transparent:not(.scrolled) .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255, 0.9)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+.navbar a {
+  color: inherit;
+}
+.navbar .nav-link {
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 600;
+}
+.navbar .brand-img {
+  height: 30px;
+}
+.navbar .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(0, 0, 0, 0.9)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+footer {
+  padding: 15px 0;
+  background-color: #232b2d;
+  color: #fff;
+  font-size: 14px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.sectionTop {
+  padding-top: 100px;
+  padding-bottom: 30px;
+  background: #0f2030 url(/images/hero_bg.jpg) fixed center;
+  background-size: cover;
+}
+.sectionTop-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: white;
+  text-align: left;
+  margin-top: 50px;
+}
+
+.profilePreview-wrapper {
+  display: flex;
+  align-items: center;
+  color: #000;
+}
+.profilePreview-wrapper:hover {
+  color: #000;
+}
+.profilePreview-img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+.profilePreview-name {
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 14px;
+  margin-left: 15px;
+}
+
+* {
+  box-sizing: border-box;
+}
+*:after, *:before {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100%;
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #000;
+  background-color: #fff;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+h3 {
+  font-size: 22px;
+  color: #000;
+  font-weight: 700;
+}
+
+h4 {
+  font-size: 17px;
+  color: #000;
+  font-weight: 700;
+}
+
+#main-div {
+  min-height: 100%;
+}
+
+/*# sourceMappingURL=main.css.map */
