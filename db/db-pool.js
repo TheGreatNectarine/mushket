@@ -34,7 +34,7 @@ module.exports.fetchMany = async (query, params = []) => {
 
 module.exports.fetchScalar = async (query, attribute, params = []) => {
 	const row = await module.exports.fetchOne(query, params);
-	if (row.success) {
+	if (row.success && row.data != null) {
 		return row["data"][attribute];
 	} else {
 		return null;
