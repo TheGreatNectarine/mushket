@@ -1,65 +1,65 @@
-"use strict";
-const pool = require("./db-pool");
+"use strict"
+const pool = require("./db-pool")
 
 const getFilteredSubjects = async (keywords) => {
 	let query = `
       SELECT *
       FROM subject s
       WHERE TRUE
-	`;
-	const faculty = keywords["faculty"];
-	const subject_type = keywords["subject_type"];
-	const credits = keywords["credits"];
-	const trimester = keywords["trimester"];
-	const tags = keywords["tags"];
-	let queryArguments = [];
-	let argumentIndex = 1;
+	`
+	const faculty = keywords["faculty"]
+	const subject_type = keywords["subject_type"]
+	const credits = keywords["credits"]
+	const trimester = keywords["trimester"]
+	const tags = keywords["tags"]
+	let queryArguments = []
+	let argumentIndex = 1
 	if (faculty) {
-		queryArguments.push(faculty);
+		queryArguments.push(faculty)
 		query += `AND s.id IN (SELECT ss.subject_id
 											FROM specialization_subject ss
 											WHERE ss.specialization_id IN (SELECT sp.id
 																			FROM specialization sp
 																			WHERE sp.faculty_id IN (SELECT f.id
 																									FROM faculty f
-																									WHERE f.name = $${argumentIndex}))) `;
-		argumentIndex += 1;
+																									WHERE f.name = $${argumentIndex}))) `
+		argumentIndex += 1
 	}
 	if (subject_type && studentID) { // TODO NEED REVIEW
-		queryArguments.push(subject_type);
+		queryArguments.push(subject_type)
 		query += `AND s.id IN (SELECT sp_s.subject_id
 					   FROM specialization_subject sp_s
-					   WHERE subject_category = $${argumentIndex}`;
-		queryArguments.push(studentID);
-		argumentIndex += 1;
+					   WHERE subject_category = $${argumentIndex}`
+		queryArguments.push(studentID)
+		argumentIndex += 1
 		query += `AND sp_s.specialization_id IN (SELECT st.specialization_id
 		                                         FROM student st
-		                                         WHERE st.id = $${argumentIndex})) `;
-		argumentIndex += 1;
+		                                         WHERE st.id = $${argumentIndex})) `
+		argumentIndex += 1
 	}
 	if (credits) {
-		queryArguments.push(credits);
-		query += `AND s.number_of_credits = $${argumentIndex} `;
-		argumentIndex += 1;
+		queryArguments.push(credits)
+		query += `AND s.number_of_credits = $${argumentIndex} `
+		argumentIndex += 1
 	}
 	if (trimester) {
-		queryArguments.push(trimester);
-		query += `AND s.trimester = $${argumentIndex} `;
-		argumentIndex += 1;
+		queryArguments.push(trimester)
+		query += `AND s.trimester = $${argumentIndex} `
+		argumentIndex += 1
 	}
 	if (tags) {
 		for (const tag of tags) {
-			queryArguments.push(tag);
+			queryArguments.push(tag)
 			query += `AND s.id IN (SELECT st.subject_id
 												FROM subject_tag st
 												WHERE st.tag_id IN (SELECT t.id
 																	FROM tag t
-																	WHERE t.name = $${argumentIndex})) `;
-			argumentIndex += 1;
+																	WHERE t.name = $${argumentIndex})) `
+			argumentIndex += 1
 		}
 	}
-	return await pool.fetchMany(query, queryArguments);
-};
+	return await pool.fetchMany(query, queryArguments)
+}
 
 /*
 const getSubjectsByStudentIDAndSubjectType = async (id, type) => {
@@ -81,8 +81,30 @@ const getSubjectsByStudentIDAndSubjectType = async (id, type) => {
 };
 */
 
+const createSubject = async (keywords) => {
+	const subject_name = keywords["subject_name"]
+	const number_of_credits = keywords["number_of_credits"]
+	const max_number_of_students = keywords["max_number_of_students"]
+	const unlimited_students = keywords["unlimited_students"]
+	const rating = null
+	const trimester = keywords["trimester"]
+	const is_for_bachelor = keywords["is_for_bachelor"]
+	const description = keywords["description"]
+	const photo_url = keywords["photo_url"]
+	if (subject_name == null || number_of_credits == null || trimester == null || is_for_bachelor == null || description == null) {
+		console.log("TRIED TO INSERT NULL IN NOT NULL")
+	}
+	const query = "INSERT INTO subject(subject_name, number_of_credits, max_number_of_students, unlimited_students, rating, trimester, is_for_bachelor, description, photo_url) " +
+		" VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)"
+	console.log([subject_name, number_of_credits, max_number_of_students, unlimited_students,
+		rating, trimester, is_for_bachelor, description, photo_url])
+	return await pool.execute(query, [subject_name, number_of_credits, max_number_of_students, unlimited_students,
+		rating, trimester, is_for_bachelor, description, photo_url])
+}
+
 module.exports = {
 	getFilteredSubjects: getFilteredSubjects,
+	createSubject: createSubject
 	// getSubjectsByStudentIDAndSubjectType: getSubjectsByStudentIDAndSubjectType
-};
+}
 
