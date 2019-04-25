@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md fixed-top <%= locals.classes ? locals.classes : '' %>">
+<nav class="navbar navbar-expand-md fixed-top <%= locals.classes? locals.classes : '' %>">
     <div class="container">
         <a class="navbar-brand" href="/"><img class="brand-img" src="/images/icon-big.png"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -15,8 +15,13 @@
                 </li>
             </ul>
             <div class="navbar-nav align-items-center">
-                <a class="nav-link" href="/login">Увійти</a>
+                <% if(locals.user.role == 'guest') { %>
+                    <a class="nav-link" href="/user/login">Увійти</a>
+                <% } else { %>
+                    <a class="nav-link" href="/user/profile/<%=locals.user.model.id%>">Профіль</a>
+                <% } %>
             </div>
         </div>
     </div>
 </nav>
+<!--<%=  JSON.stringify(locals.user)  %>-->
