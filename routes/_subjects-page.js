@@ -6,7 +6,7 @@ const students = require("../db/students-dao");
 
 router.get("/", async (req, res, next) => {
 	let filterArgs = req.query;
-	if (req.user && req.user.role === "stud"){
+	if (req.user && req.user.role === "student"){
 		filterArgs["studentID"] = req.user.model.id;
 	} else {
 		delete filterArgs["studentID"];
