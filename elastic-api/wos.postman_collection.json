@@ -1,0 +1,131 @@
+{
+	"info": {
+		"_postman_id": "067adb43-1732-431a-afa8-738390312aba",
+		"name": "wos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "FIRST SUBJECT",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"title\": \"Web oriented systems\",\n    \"description\": \"Nice systems: php, javascript\",\n    \"annotations\": \"Nice annotations about web programming etc laravel\",\n    \"teacher\": \"Oletsky\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/addIndex",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"addIndex"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SECOND SUBJECT",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 2,\n    \"title\": \"Java EE\",\n    \"description\": \"It is introduction to Java Spring Framework\",\n    \"annotations\": \"Spring, Java, JDK\",\n    \"teacher\": \"Glybovets\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/addIndex",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"addIndex"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "THIRD SUBJECT",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 3,\n    \"title\": \"Haskell\",\n    \"description\": \"Omg functional programming Haskell\",\n    \"annotations\": \"Haskell, lambda, matan\",\n    \"teacher\": \"Protsenko\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/addIndex",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"addIndex"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SEARCH",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/search?keywords=haskell+programming",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "keywords",
+							"value": "haskell+programming"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

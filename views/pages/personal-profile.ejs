@@ -7,20 +7,29 @@
         <div class="row">
             <div class="col-12 profile-wrapper">
                 <div class="profile__image">
-                    <img src="<%= locals.profile.profile_imgSrc %>">
+                    <img src="<%= locals.user.model.photo_link %>">
                 </div>
                 <div class="profile__info">
-                    <div class="profile__info-name"><%= locals.profile.profile_name %></div>
-                    <div class="profile__info-role"><%= locals.profile.profile_role %></div>
-                    <div class="profile__info-faculty"><%= locals.profile.profile_faculty %></div>
+                    <div class="profile__info-name"><%= locals.user.model.full_name %></div>
+                    <div class="profile__info-role"><%= locals.user.role %></div>
+
+                    <% if (locals.user.role === 'teacher') { %>
+                        <div class="profile__info-position"><%= locals.user.model.position %></div>
+                        <div class="profile__info-faculty"><%= locals.user.model.cathedra_id %></div>
+                    <% } else { %>
+
+                    <% } %>
                 </div>
             </div>
+        </div>
+        <div class="text-center" style="margin-top: 40px">
+            <a href="/user/logout" style="padding: 5px 20px" class="btn btn-danger">Вийти з системи</a>
         </div>
     </div>
 </section>
 <section class="section">
     <div class="container">
-
+        <%= JSON.stringify(locals.user) %>
     </div>
 </section>
 

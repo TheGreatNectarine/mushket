@@ -8,21 +8,27 @@ const crypto = require('crypto')
 
 /* GET login page. */
 router.get('/login', function (req, res) {
+    if(res.locals.user.role !== 'guest')
+        return res.redirect('/')
+
     return res.render('pages/login')
 })
 
 router.post('/login', async function (req, res) {
+    if(res.locals.user.role !== 'guest')
+        return res.redirect('/')
+
     const accId = await accs.accId(req.body.login, req.body.pwd)
     if (accId !== null) {
         const sessID = crypto.randomBytes(16).toString('hex')
         let redirectUrl = '/'
         const stud = await studs.getByAccID(accId)
         if (stud.data != null) {
-            sessions.attach(sessID, {role: 'stud', model: stud.data})
+            sessions.attach(sessID, {role: 'student', model: stud.data})
         } else {
             const teacher = await teachers.getByAccID(accId)
             sessions.attach(sessID, {role: 'teacher', model: teacher.data})
-            redirectUrl = '/profile'
+            redirectUrl = '/user/profile'
         }
         return res.status(200).cookie('sessid', sessID).redirect(redirectUrl)
     } else {
@@ -44,7 +50,10 @@ router.get("/profile/:id", function (req, res, next) {
 });
 
 router.get("/profile", function (req, res, next) {
-    res.render("pages/personal-profile", {profile: profileExample});
+    if(res.locals.user.role === 'guest')
+        return res.redirect('/user/login')
+
+    res.render("pages/personal-profile");
 });
 
 module.exports = router
