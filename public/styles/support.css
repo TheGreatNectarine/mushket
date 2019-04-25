@@ -10,4 +10,34 @@ body {
   background: #232b2d !important;
 }
 
+.container {
+  width: 100%;
+  height: 100%;
+  justify-items: center;
+  display: grid;
+  align-items: center;
+}
+.container form {
+  border: 1px solid #2d373a;
+  border-radius: 7px;
+  padding: 10px 26px;
+  color: #2d373a;
+  font-size: 17px;
+  font-weight: 700;
+  background: #f3f3f3;
+}
+.container form .ticket-block {
+  margin: 10px 0;
+}
+.container form .ticket-block label {
+  display: block;
+}
+.container form .ticket-block input, .container form .ticket-block textarea {
+  border: 0.1rem solid #bfbfbf;
+  font-family: monospace;
+  border-radius: 0.4rem;
+  font-size: 90%;
+  padding: 0.7em 0.5em;
+}
+
 /*# sourceMappingURL=support.css.map */
