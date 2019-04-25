@@ -4,6 +4,7 @@
 @import "components/navbar";
 @import "components/footer";
 @import "components/section-top";
+@import "components/profile-preview";
 
 * {
 	box-sizing: border-box;
@@ -34,6 +35,19 @@ body {
 	margin: 0;
 	padding: 0;
 }
+
+h3 {
+	font-size: 22px;
+	color: $black;
+	font-weight: 700;
+}
+
+h4 {
+	font-size: 17px;
+	color: $black;
+	font-weight: 700;
+}
+
 
 #main-div {
 	min-height: 100%;

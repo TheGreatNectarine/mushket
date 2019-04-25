@@ -55,9 +55,9 @@
             <div class="col-lg-8 col-md-7">
                 <div class="sectionCourses__rightCol">
                     <div class="coursesContainer">
-                        <% for(var i=0; i < 10; i ++) {%>
-                            <%- include('../templates/course-template.ejs', {course: locals.course}); %>
-                        <% } %>
+                        <% locals.courses.forEach(function (course) { %>
+                            <%- include('../templates/course-template.ejs', {course: course}); %>
+                        <% }); %>
                     </div>
                 </div>
             </div>

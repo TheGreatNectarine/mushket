@@ -1,14 +1,17 @@
 <div class="course-wrapper">
     <div class="course__image">
-        <img src="<%= locals.course.courseImageSrc %>">
+        <img src="<%= locals.course.course_imgSrc %>">
     </div>
     <div class="course__info">
-        <a href="<%= locals.course.courseLink %>" class="course__info-name"><%= locals.course.courseInfoName %></a>
+        <a href="/course/<%= locals.course.course_id %>" class="course__info-name"><%= locals.course.course_name %></a>
         <div class="course__info-rating">
-            <%- include('../templates/stars.ejs', {value: locals.course.courseInfoRating, max: 5}); %>
-            <span class="comments-count"> (<%= course.comments.length %> відгуків)</span>
+            <%- include('../templates/stars.ejs', {value: locals.course.course_rating, max: 5}); %>
+            <span class="comments-count"> (<%= course.course_reviews.length %> відгуків)</span>
         </div>
-        <div class="course__info-description"><%= locals.course.courseInfoDescription %></div>
-        <a href="<%= locals.course.lectorLink %>" class="course__info-lector"><%= locals.course.courseInfoLector %></a>
+        <div class="course__info-description"><%= locals.course.course_description %></div>
+        <% locals.course.course_lecturers.forEach(function (lecturer) { %>
+            <a href="/profile/<%= lecturer.lecturer_id %>"
+               class="course__info-lector"><%= lecturer.lecturer_name %></a>
+        <% }) %>
     </div>
 </div>

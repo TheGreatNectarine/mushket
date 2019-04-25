@@ -213,6 +213,26 @@ footer {
   margin-top: 50px;
 }
 
+.profilePreview-wrapper {
+  display: flex;
+  align-items: center;
+  color: #000;
+}
+.profilePreview-wrapper:hover {
+  color: #000;
+}
+.profilePreview-img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+.profilePreview-name {
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 14px;
+  margin-left: 15px;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -237,6 +257,18 @@ body {
   position: relative;
   margin: 0;
   padding: 0;
+}
+
+h3 {
+  font-size: 22px;
+  color: #000;
+  font-weight: 700;
+}
+
+h4 {
+  font-size: 17px;
+  color: #000;
+  font-weight: 700;
 }
 
 #main-div {

@@ -3,7 +3,11 @@ var router = express.Router();
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-	res.render("pages/index", {course: require("../db/_testing_obj").courseExample});
+	let course = require("../db/_testing_obj").courseExample
+	let courses = []
+	for (let i=0; i < 10; i++)
+		courses[i] = course
+	res.render("pages/index", {courses: courses});
 });
 
 module.exports = router;
