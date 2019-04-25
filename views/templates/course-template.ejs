@@ -9,9 +9,5 @@
             <span class="comments-count"> (<%= course.course_reviews.length %> відгуків)</span>
         </div>
         <div class="course__info-description"><%= locals.course.course_description %></div>
-        <% locals.course.course_lecturers.forEach(function (lecturer) { %>
-            <a href="/profile/<%= lecturer.lecturer_id %>"
-               class="course__info-lector"><%= lecturer.lecturer_name %></a>
-        <% }) %>
     </div>
 </div>

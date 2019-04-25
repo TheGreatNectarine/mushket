@@ -25,7 +25,6 @@ const setUpRoutes = () => {
 	app.use(`api/v1/specializations`, require("./api/specializationsRouter"));
 	app.use(`api/v1/chairs`, require("./api/chairsRouter"));
 	app.use(`/subjects`, require("./routes/subjects-page"));
-	app.use(`/api/v1/users`, require("./api/users"));
 };
 
 const setUpViews = () => {

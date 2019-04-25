@@ -6,7 +6,6 @@ const students = require("../db/students-dao")
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-	console.log(res.user)
 	let course = require("../db/_testing_obj").courseExample
 	let courses = []
 	for (let i = 0; i < 10; i++)
