@@ -7,21 +7,21 @@
         <div class="row">
             <div class="col-md-9 course-wrapper">
                 <div class="course__image">
-                    <img src="<%= locals.course.course_imgSrc %>">
+                    <img src="<%= locals.course.photo_url %>">
                 </div>
                 <div class="course__info">
-                    <div class="course__info-name"><%= locals.course.course_name %></div>
+                    <div class="course__info-name"><%= locals.course.subject_name %></div>
                     <div class="course__info-rating">
-                        <%- include('../templates/stars.ejs', {value: locals.course.course_rating, max: 5}); %>
-                        <span class="comments-count"><%= locals.course.course_reviews.length %> відгуків</span>
+                        <%- include('../templates/stars.ejs', {value: locals.course.rating, max: 5}); %>
+                        <span class="comments-count"><%= locals.reviews.length %> відгуків</span>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
                 <p class="lecturer-title">Викладачі</p>
-                <% locals.course.course_lecturers.forEach(function (lecturer) { %>
-                    <a href="/user/profile/<%= lecturer.lecturer_id %>"
-                       class="lecturer-link"><%= lecturer.lecturer_name %></a>
+                <% locals.teachers.forEach(function (teacher) { %>
+                    <a href="/user/profile/<%= teacher.id %>"
+                       class="lecturer-link"><%= teacher.full_name %></a>
                 <% }) %>
             </div>
         </div>
@@ -31,16 +31,16 @@
     <div class="container">
         <div class="block block__description">
             <h3>Опис курсу:</h3>
-            <div class="description-text"><%= locals.course.course_description %></div>
+            <div class="description-text"><%= locals.course.description %></div>
 
-            <h4 style="margin-top: 30px">Кредити: <%= course.course_credits %></h4>
+            <h4 style="margin-top: 30px">Кредити: <%= course.number_of_credits %></h4>
         </div>
 
         <div class="block block__rating">
             <h3>Рейтинг курсу:</h3>
-            <div class="rating-num"><%= locals.course.course_rating %><span class="rating-num-max">&nbsp;/&nbsp;5</span>
+            <div class="rating-num"><%= locals.course.rating %><span class="rating-num-max">&nbsp;/&nbsp;5</span>
             </div>
-            <%- include('../templates/stars.ejs', {value: locals.course.course_rating, max: 5}); %>
+            <%- include('../templates/stars.ejs', {value: locals.course.rating, max: 5}); %>
         </div>
 
         <div class="row">
@@ -49,10 +49,10 @@
                     <h3>Відгуки:</h3>
 
                     <div class="comments-container">
-                        <% locals.course.course_reviews.forEach(function (review) { %>
+                        <% locals.reviews.forEach(function (review) { %>
                             <div class="review-wrapper">
-                                <div class="review-title"><%= review.review_title %></div>
-                                <%- include('../templates/stars.ejs', {value: review.review_rating, max: 5}); %>
+                                <div class="review-title"><%= review.title %></div>
+                                <%- include('../templates/stars.ejs', {value: review.review_mark, max: 5}); %>
                                 <div class="review-text"><%= review.review_text %></div>
                                 <%- include('../templates/profile_preview.ejs', {name: review.review_profile.profile_name, imgSrc: review.review_profile.profile_imgSrc}); %>
                             </div>

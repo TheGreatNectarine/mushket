@@ -3,7 +3,7 @@
         <img src="<%= locals.course.photo_url %>">
     </div>
     <div class="course__info">
-        <a href="/course/<%= locals.id %>" class="course__info-name"><%= locals.course.subject_name %></a>
+        <a href="/course/<%= locals.course.id %>" class="course__info-name"><%= locals.course.subject_name %></a>
         <div class="course__info-rating">
             <%- include('../templates/stars.ejs', {value: locals.course.rating, max: 5}); %>
             <span class="comments-count"> (<%= 0 %> відгуків)</span>

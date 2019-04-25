@@ -81,6 +81,39 @@ const getSubjectsByStudentIDAndSubjectType = async (id, type) => {
 };
 */
 
+const getReviewsBySubjectId = async (id) => {
+	const query = `
+	(
+		SELECT review_text as reviewText, review_mark as reviewMark, submit_date as submitDate, teacher.full_name as reviewerName, 'teacher' as reviewerRole
+		FROM (review INNER JOIN teacher ON review.teacher_id = teacher.id)
+		WHERE review.subject_id = ${id}
+			UNION
+		SELECT review_text as reviewText, review_mark as reviewMark, submit_date as submitDate, student.full_name as reviewerName, 'student' as reviewerRole
+		FROM (review INNER JOIN student ON review.student_id = student.id)
+		WHERE review.subject_id = ${id}
+	)
+		ORDER BY submitDate;`
+	return pool.fetchMany(query);
+}
+
+const getById = async (id) => {
+	const query = `
+		SELECT *
+		FROM subject
+		WHERE id = ${id}
+	`;
+	return pool.fetchOne(query);
+}
+
+const getTeachersBySubjectId = async (id) => {
+	const query =  `SELECT *
+					FROM teacher
+					WHERE id IN (SELECT teacher_id
+								FROM teacher_subject
+								WHERE subject_id = ${id});`;
+	return pool.fetchMany(query);
+}
+
 const createSubject = async (keywords) => {
 	const subject_name = keywords["subject_name"]
 	const number_of_credits = keywords["number_of_credits"]
@@ -104,6 +137,9 @@ const createSubject = async (keywords) => {
 
 module.exports = {
 	getFilteredSubjects: getFilteredSubjects,
+	getReviewsBySubjectId: getReviewsBySubjectId,
+	getById: getById,
+	getTeachersBySubjectId: getTeachersBySubjectId,
 	createSubject: createSubject
 	// getSubjectsByStudentIDAndSubjectType: getSubjectsByStudentIDAndSubjectType
 }

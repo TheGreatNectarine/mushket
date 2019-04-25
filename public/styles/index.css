@@ -40,14 +40,39 @@
   border-radius: 7px;
   position: sticky;
   top: 85px;
-  padding: 10px;
+  padding: 10px 15px;
 }
-.sectionCourses__leftCol .filter-label {
+.sectionCourses__leftCol .filterBlock {
   font-size: 19px;
   color: #232b2d !important;
   border-bottom: 1px solid #696A6D4D;
   font-weight: 700;
-  margin: 10px 0;
+  margin: 0 0 10px;
+  padding: 10px 0;
+}
+.sectionCourses__leftCol .filterBlock label {
+  display: block;
+}
+.sectionCourses__leftCol .filterBlock input {
+  display: inline-block;
+}
+.sectionCourses__leftCol .filterBlock select {
+  display: block;
+  width: 100%;
+}
+.sectionCourses__leftCol .filterBlock .creditsBlock-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sectionCourses__leftCol .filterBlock .creditsBlock-flex input {
+  width: 80%;
+}
+.sectionCourses__leftCol .filterBlock .creditsBlock-flex .creditsValue {
+  font-weight: 500;
+  margin-left: 5px;
+  margin-right: 5px;
+  display: inline-block;
 }
 .sectionCourses__rightCol .coursesContainer {
   border-top: 1px solid #dfdfdf;
