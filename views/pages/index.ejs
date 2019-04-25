@@ -3,11 +3,73 @@
 <link rel="stylesheet" type="text/css" href="styles/index.css">
 
 <section class="sectionTop">
-    <div class="container">
-        <div class="sectionTop-title">Hello there!</div>
+    <div class="container text-center">
+        <div class="sectionTop-title">Курси</div>
+        <div class="serch-bar row justify-content-sm-center no-gutters">
+            <input class="col-sm-12 col-md-5" type="text" placeholder="Введіть назву курсу" name="search"/>
+            <button class="col col-sm-2 col-md-1 offset-md-1 btn btn-light">Знайти</button>
+        </div>
     </div>
 </section>
-<div style="height: 1000px;"></div>
+<section class="sectionCourses">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-5">
+                <div class="sectionCourses__leftCol">
+                    <% var filterExample = {
+                            "faculty": {
+                                "selected": "Факультет інформатики",
+                                "options": ["Всі", "all", "Факультет інформатики"]
+                            },
+                            "tags": {
+                                "tagName": true,
+                                "tagName1": false,
+                                "tagName2": true
+                            },
+                            "credits": "3.5",
+                            "trimester": "2Д",
+                            "subject_type": "Професійно-орієнтовна"
+                    };%>
+
+                    <div class="filter-label">Факультет</div>
+                    <select name="faculties">
+                        <% var _ = filterExample.faculty;
+                            for (var j=0; j < _.options.length; j++) {
+                                if(_.selected === _.options[j]) {%>
+                                    <option value="volvo" selected><%= _.options[j] %></option>
+                                <% } else {%>
+                                    <option value="volvo"><%= _.options[j] %></option>
+                        <%}}%>
+                    </select>
+                    <div class="filter-label">Теги</div>
+                    <div class="filter-label">Кредити</div>
+                    <div class="filter-label">Триместр</div>
+                    <div class="filter-label">Тип</div>
+                    <button class="btn btn-block btn-apply">Застосувати</button>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-7">
+                <div class="sectionCourses__rightCol">
+                    <div class="coursesContainer">
+                        <% var courseExample = {
+                            "courseImageSrc": "/images/courses/course1.jpg",
+                            "courseInfoName": "Веб-орієнтовані системи",
+                            "courseInfoRating" : 5.0,
+                            "courseInfoDescription": "Курс про веб-орієнтовані системи",
+                            "courseInfoLector": "Олецький",
+                            "courseLink": "#",
+                            "lectorLink": "#"
+                        }%>
+                        <% for(var i=0; i < 10; i ++) {%>
+                            <%- include('../templates/course-template.ejs', {course: courseExample}); %>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 
 <% include ../common/page-bottom-layout.ejs %>
 
