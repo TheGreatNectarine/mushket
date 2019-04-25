@@ -45,7 +45,12 @@
                         <%}}%>
                     </select>
                     <div class="filter-label">Теги</div>
-                    <div class="filter-label">Кредити</div>
+                    <div class="filter-label">
+                        <label for="creditsInput">Кредити</label>
+                        <input type="range" name="credits" id="creditsInput" min="2" max="12" step="0.5"
+                               oninput="creditsOutput.value = creditsInput.value">
+                        <output name="ageOutputName" id="creditsOutput">2</output>
+                    </div>
                     <div class="filter-label">Триместр</div>
                     <div class="filter-label">Тип</div>
                     <button class="btn btn-block btn-purple">Застосувати</button>
