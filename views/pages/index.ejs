@@ -19,41 +19,54 @@
         <div class="row">
             <div class="col-lg-4 col-md-5">
                 <div class="sectionCourses__leftCol">
-                    <% var filterExample = {
-                            "faculty": {
-                                "selected": "Факультет інформатики",
-                                "options": ["Всі", "all", "Факультет інформатики"]
-                            },
-                            "tags": {
-                                "tagName": true,
-                                "tagName1": false,
-                                "tagName2": true
-                            },
-                            "credits": "3.5",
-                            "trimester": "2Д",
-                            "subject_type": "Професійно-орієнтовна"
-                    };%>
+                    <form method="get">
+                        <div class="filterBlock">
+                            <label for="facultyInput">Факультет</label>
+                            <select id="facultyInput" name="faculties">
+                                <option selected>-</option>
+                                <option>Inforamtyki</option>
+                                <option>Inforamtyki</option>
+                                <option>Inforamtyki</option>
+                                <option>Inforamtyki</option>
+                            </select>
+                        </div>
+                        <div class="filterBlock">
+                            <label for="facultyInput">Теги</label>
+                        </div>
+                        <div class="filterBlock">
+                            <label for="creditsInput">Кредити</label>
+                            <div class="creditsBlock-flex">
+                                <input type="range" name="credits" id="creditsInput"
+                                       min="<%= locals.filterConfig.credits.min %>"
+                                       max="<%= locals.filterConfig.credits.max %>"
+                                       value="<%= locals.filterConfig.credits.min %>"
+                                       step="<%= locals.filterConfig.credits.step %>"
+                                       oninput="creditsOutput.value = creditsInput.value">
+                                <output class="creditsValue" name="ageOutputName" id="creditsOutput">
+                                    <%= locals.filterConfig.credits.min %>
+                                </output>
+                            </div>
 
-                    <div class="filter-label">Факультет</div>
-                    <select name="faculties">
-                        <% var _ = filterExample.faculty;
-                            for (var j=0; j < _.options.length; j++) {
-                                if(_.selected === _.options[j]) {%>
-                                    <option value="volvo" selected><%= _.options[j] %></option>
-                                <% } else {%>
-                                    <option value="volvo"><%= _.options[j] %></option>
-                        <%}}%>
-                    </select>
-                    <div class="filter-label">Теги</div>
-                    <div class="filter-label">
-                        <label for="creditsInput">Кредити</label>
-                        <input type="range" name="credits" id="creditsInput" min="2" max="12" step="0.5"
-                               oninput="creditsOutput.value = creditsInput.value">
-                        <output name="ageOutputName" id="creditsOutput">2</output>
-                    </div>
-                    <div class="filter-label">Триместр</div>
-                    <div class="filter-label">Тип</div>
-                    <button class="btn btn-block btn-purple">Застосувати</button>
+                        </div>
+                        <div class="filterBlock">
+                            <label for="trymesterInput">Триместр</label>
+                            <select id="trymesterInput" name="trymester">
+                                <option selected value>- Не вибрано -</option>
+                                <% locals.filterConfig.trymesters.forEach((trym) => { %>
+                                    <option value="<%= trym %>"><%= trym %></option>
+                                <% }); %>
+                            </select>
+                        </div>
+                        <div class="filterBlock">
+                            <label for="typesInput">Тип</label>
+                            <select id="typesInput" name="types">
+                                <option selected value>- Не вибрано -</option>
+                                <% locals.filterConfig.types.forEach((trym) => { %>
+                                    <option value="<%= trym %>"><%= trym %></option>
+                                <% }); %>
+                            </select></div>
+                        <button class="btn btn-block btn-purple">Застосувати</button>
+                    </form>
                 </div>
             </div>
             <div class="col-lg-8 col-md-7">
