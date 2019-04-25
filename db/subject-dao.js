@@ -69,10 +69,35 @@ const getFilteredSubjects = async (keywords) => {
 		return {success: true, data: results ? results.rows : []};
 	} catch (e) {
 		return {success: false, err: e};
+	} finally {
+		client.release();
+	}
+};
+
+const getSubjectsByStudentIDAndSubjectType = async (id, type) => {
+	const client = await pool.connect();
+	try {
+		const query = `
+          SELECT *
+          FROM subject s
+          WHERE s.id IN (SELECT ss.subject_id
+                         FROM student_subject ss
+                         WHERE ss.student_id = $ 1)
+            AND s.id IN (SELECT sp_s.subject_id
+                         FROM specialization_subject sp_s
+                         WHERE subject_category = $ 2)
+		`;
+		const results = await client.query(query, [id, type]);
+		return {success: true, data: results ? results.rows : []};
+	} catch (err) {
+		return {success: false, err: err};
+	} finally {
+		client.release();
 	}
 };
 
 module.exports = {
-	getFilteredSubjects: getFilteredSubjects
+	getFilteredSubjects: getFilteredSubjects,
+	getSubjectsByStudentIDAndSubjectType: getSubjectsByStudentIDAndSubjectType
 };
 
