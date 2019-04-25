@@ -18,6 +18,7 @@ const setUpRoutes = () => {
 	app.use(`/login`, require("./routes/login"));
 	app.use(`/profile`, require("./routes/profile"));
 	app.use(`/course`, require("./routes/course"));
+	app.use(`/support`, require("./routes/support"));
 	app.use(`api/v1/students`, require("./api/studentsRouter"));
 	app.use(`api/v1/teachers`, require("./api/teachersRouter"));
 	app.use(`api/v1/subjects`, require("./api/subjectsRouter"));
