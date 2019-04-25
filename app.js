@@ -11,10 +11,10 @@ const app = express();
 
 const setUpMiddleware = () => {
 	app.use(sessions.sessionMiddleware);
-}
+};
 
 const setUpRoutes = () => {
-	// app.use(`/`, require("./api/index"));
+	app.use(`/`, require("./routes/index"));
 	app.use(`/subjects`, require("./routes/subjects-page"));
 	app.use(`api/v1/students`, require("./api/studentsRouter"));
 	app.use(`api/v1/teachers`, require("./api/teachersRouter"));

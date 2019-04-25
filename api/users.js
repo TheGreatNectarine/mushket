@@ -7,8 +7,7 @@ const sessions = require('../middleware/sessions');
 const crypto = require('crypto');
 
 router.post('/', async function(req, res) {
-  const queryRes = await accs.accId(req.body.login, req.body.pwd);
-  const accId = queryRes.data;
+	const accId = await accs.accId(req.body.login, req.body.pwd);
   if(accId == null) {
     res.status(404).send();
   } else {

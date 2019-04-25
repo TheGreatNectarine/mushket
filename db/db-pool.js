@@ -8,8 +8,8 @@ const pool = new Pool({
 	ssl: true
 });
 
-module.exports.fetchOne = async (query, params=[]) => {
-	const client = await pool.connect();	
+module.exports.fetchOne = async (query, params = []) => {
+	const client = await pool.connect();
 	try {
 		const result = await client.query(query, params);
 		return {success: true, data: result.rowCount !== 0 ? result.rows[0] : null};
@@ -18,13 +18,13 @@ module.exports.fetchOne = async (query, params=[]) => {
 	} finally {
 		client.release();
 	}
-}
+};
 
-module.exports.fetchMany = async (query, params=[]) => {
+module.exports.fetchMany = async (query, params = []) => {
 	const client = await pool.connect();
 	try {
 		const result = await client.query(query, params);
-		return {success: true, data: result != null ? result.rows : []};
+		return {success: true, data: result !== null ? result.rows : []};
 	} catch (e) {
 		return {success: false, err: e};
 	} finally {
@@ -32,6 +32,11 @@ module.exports.fetchMany = async (query, params=[]) => {
 	}
 };
 
-module.exports.fetchScalar = async (query, params=[], attribute) => {
-	return (await module.exports.fetchOne(query, params)[attribute]);
+module.exports.fetchScalar = async (query, attribute, params = []) => {
+	const row = await module.exports.fetchOne(query, params);
+	if (row.success) {
+		return row["data"][attribute];
+	} else {
+		return null;
+	}
 };

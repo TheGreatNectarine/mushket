@@ -5,18 +5,14 @@ const subjects = require("../db/subject-dao");
 const students = require("../db/students-dao");
 
 router.get("/", async (req, res, next) => {
-	const filterArgs = req.query;
-	// console.log(req.user.model);
+	let filterArgs = req.query;
+	if (req.user && req.user.role === "stud"){
+		filterArgs["studentID"] = req.user.model.id;
+	} else {
+		delete filterArgs["studentID"];
+	}
 	try {
-		const results = await subjects.getFilteredSubjects({
-			faculty: "Факультет інформатики",
-			tags: ["Факультет інформатики", "Програмування", "C++"],
-			credits: 3,
-			trimester: "2Д",
-			specialization: "students.getStudentsSpecializationByID()",
-			subject_type: "Професійно-орієнтований"
-			//знайти проф-орієнтовані дисципліни для студента з айді
-		});
+		const results = await subjects.getFilteredSubjects(req.query);
 		res.send({results: results, filters: filterArgs});
 	} catch (e) {
 		res.send({results: [], filters: filterArgs, err: e});
