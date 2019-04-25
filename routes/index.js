@@ -7,18 +7,18 @@ const students = require("../db/students-dao")
 /* GET home page. */
 router.get("/", async (req, res, next) => {
 	let filterArgs = req.query
-	if (locals.res.user.role === "student") {
-		filterArgs["studentID"] = req.user.model.id
+	if (res.locals.user.role === "student") {
+		filterArgs["studentID"] = res.locals.user.model.id
 	} else {
 		delete filterArgs["studentID"]
 	}
-	let courses = []
+	let results = []
 	try {
-		courses = await subjects.getFilteredSubjects(req.query)
+		results = await subjects.getFilteredSubjects(req.query)
 	} catch (e) {
-		courses = []
+		results = []
 	}
-	res.render("pages/index", {courses: courses, filters: filterArgs})
+	res.render("pages/index", {courses: results.data, filters: filterArgs})
 })
 
 module.exports = router
