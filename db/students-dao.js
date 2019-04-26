@@ -37,5 +37,13 @@ module.exports = {
 		`
 		const args = [id]
 		return await pool.fetchMany(query, args)
-	}
+	},
+	addTag: async (student_id, tag_id) => {
+		const query = `
+		INSERT INTO student_tag(student_id, tag_id) 
+		VALUES ($1, $2)
+		`
+		const args = [student_id, tag_id]
+		return await pool.fetchOne(query, args)
+	},
 }

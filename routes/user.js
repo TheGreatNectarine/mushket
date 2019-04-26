@@ -98,4 +98,12 @@ router.get('/dooficce', async function(req, res) {
     });
 });
 
+router.post("/profile/update-tags", async (req, res, next) => {
+    const newTags = req.body;
+    for (const tag of newTags) {
+        studs.addTag(res.locals.user.model.id, tag.id)
+    }
+    res.redirect("/user/profile")
+});
+
 module.exports = router
