@@ -29,7 +29,7 @@ const getFilteredSubjects = async (keywords) => {
 		queryArguments.push(subject_type)
 		query += `AND s.id IN (SELECT sp_s.subject_id
 					   FROM specialization_subject sp_s
-					   WHERE subject_category = $${argumentIndex}`
+					   WHERE subject_category = $${argumentIndex} `
 		queryArguments.push(studentID)
 		argumentIndex += 1
 		query += `AND sp_s.specialization_id IN (SELECT st.specialization_id
@@ -39,7 +39,7 @@ const getFilteredSubjects = async (keywords) => {
 	}
 	if (credits) {
 		queryArguments.push(credits)
-		query += `AND s.number_of_credits = $${argumentIndex} `
+		query += `AND s.number_of_credits <= $${argumentIndex} `
 		argumentIndex += 1
 	}
 	if (trimester) {

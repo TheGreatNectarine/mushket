@@ -3,6 +3,7 @@ const express = require('express')
 const router = express.Router()
 const subjects = require('../db/subject-dao')
 const students = require('../db/students-dao')
+const faculties = require("../db/faculty-dao")
 
 /* GET home page. */
 router.get('/', async (req, res, next) => {
@@ -13,7 +14,8 @@ router.get('/', async (req, res, next) => {
             "max": 12,
             "step": 0.5
         },
-        "types": ['Професійно-орієнтована', 'Нормативна', 'Вибіркова']
+        "types": ['Професійно-орієнтована', 'Нормативна', 'Вибіркова'],
+        "faculties": (await faculties.getAllFaculties()).data
     }
 
     let filterArgs = req.query
@@ -24,6 +26,7 @@ router.get('/', async (req, res, next) => {
     }
 
     let results = []
+    console.log(req.query)
     try {
         results = await subjects.getFilteredSubjects(req.query)
     } catch (e) {

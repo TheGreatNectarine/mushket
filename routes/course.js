@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const subjects = require('../db/subject-dao')
+const students = require('../db/students-dao')
 
 router.get('/:id', async function (req, res, next) {
     const subjID = req.params.id
@@ -10,13 +11,13 @@ router.get('/:id', async function (req, res, next) {
     } else {
         const teachers = (await subjects.getTeachersBySubjectId(subjID))
         const reviews = (await subjects.getReviewsBySubjectId(subjID))
+        const canReview = res.locals.user.model ? await students.studentWithIDCanReviewSubjectWithID(res.locals.user.model.id, subjID) : false
 
-        console.log(teachers)
-        console.log(reviews)
         res.render('pages/course', {
             course: subj.data,
             teachers: teachers.data,
             reviews: reviews.data,
+	        can_review: canReview
         })
     }
 })

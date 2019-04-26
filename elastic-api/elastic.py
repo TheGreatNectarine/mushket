@@ -3,7 +3,7 @@ from elasticsearch_async import AsyncElasticsearch
 
 # subject = {'id': subject_id, plus all needed information}
 async def index(es, subject: dict):
-    await es.index(index='subjects', doc_type='subject', id=subject['id'], body=subject)
+    await es.index(index='createSubjects', doc_type='subject', id=subject['id'], body=subject)
 
 
 async def search(es, keywords: str):
@@ -15,7 +15,7 @@ async def search(es, keywords: str):
             }
         }
     }
-    res = await es.search(index='subjects', body=body, sort='_score')
+    res = await es.search(index='createSubjects', body=body, sort='_score')
     return res['hits']['hits']
 
 

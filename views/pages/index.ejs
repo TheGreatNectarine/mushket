@@ -22,12 +22,11 @@
                     <form method="get">
                         <div class="filterBlock">
                             <label for="facultyInput">Факультет</label>
-                            <select id="facultyInput" name="faculties">
-                                <option selected>-</option>
-                                <option>Inforamtyki</option>
-                                <option>Inforamtyki</option>
-                                <option>Inforamtyki</option>
-                                <option>Inforamtyki</option>
+                            <select id="facultyInput" name="faculty">
+                                <option selected value>- Не вибрано -</option>
+                                <% locals.filterConfig.faculties.forEach((fac) => { %>
+                                    <option value="<%= fac.name %>"><%= fac.name %></option>
+                                <% }); %>
                             </select>
                         </div>
                         <div class="filterBlock">
@@ -39,18 +38,18 @@
                                 <input type="range" name="credits" id="creditsInput"
                                        min="<%= locals.filterConfig.credits.min %>"
                                        max="<%= locals.filterConfig.credits.max %>"
-                                       value="<%= locals.filterConfig.credits.min %>"
+                                       value="<%= locals.filterConfig.credits.max %>"
                                        step="<%= locals.filterConfig.credits.step %>"
                                        oninput="creditsOutput.value = creditsInput.value">
                                 <output class="creditsValue" name="ageOutputName" id="creditsOutput">
-                                    <%= locals.filterConfig.credits.min %>
+                                    <%= locals.filterConfig.credits.max %>
                                 </output>
                             </div>
 
                         </div>
                         <div class="filterBlock">
                             <label for="trymesterInput">Триместр</label>
-                            <select id="trymesterInput" name="trymester">
+                            <select id="trymesterInput" name="trimester">
                                 <option selected value>- Не вибрано -</option>
                                 <% locals.filterConfig.trymesters.forEach((trym) => { %>
                                     <option value="<%= trym %>"><%= trym %></option>
@@ -59,7 +58,7 @@
                         </div>
                         <div class="filterBlock">
                             <label for="typesInput">Тип</label>
-                            <select id="typesInput" name="types">
+                            <select id="typesInput" name="subject_type">
                                 <option selected value>- Не вибрано -</option>
                                 <% locals.filterConfig.types.forEach((trym) => { %>
                                     <option value="<%= trym %>"><%= trym %></option>
