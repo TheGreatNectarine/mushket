@@ -46,7 +46,7 @@ router.get("/search", async (req, res, next) => {
 		try {
 			const response = await fetch(url)
 			data = await response.json()
-			console.log(json)
+			// console.log(json)
 		} catch (error) {
 			console.log(error)
 		}
@@ -60,7 +60,7 @@ router.get("/search", async (req, res, next) => {
 	}
 
 	const filterConfig = {
-		"trymesters": ["1", "2", "2д", "3", "4", "4д", "5", "6", "6д", "7", "8"],
+		"trymesters": ["1", "2", "2Д", "3", "4", "4Д", "5", "6", "6Д", "7", "8"],
 		"credits": {
 			"min": 2,
 			"max": 12,
@@ -82,7 +82,7 @@ router.get("/search", async (req, res, next) => {
 	let newRes = []
 	try {
 		results = await subjects.getFilteredSubjects(req.query)
-		console.log("a")
+		console.log(results)
 		results.data = results.data.filter(el => ids.findIndex(id => el.id === id) >= 0)
 		console.log({results, ids})
 	} catch (e) {

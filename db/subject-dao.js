@@ -53,7 +53,7 @@ const getFilteredSubjects = async (keywords) => {
 	}
 	if (credits) {
 		queryArguments.push(credits)
-		query += `AND s.number_of_credits < $${argumentIndex} `
+		query += `AND s.number_of_credits <= $${argumentIndex} `
 		argumentIndex += 1
 	}
 	if (trimester) {
