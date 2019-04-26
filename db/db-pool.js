@@ -39,6 +39,7 @@ module.exports.fetchMany = async (query, params = []) => {
 		const result = await client.query(query, params)
 		return {success: true, data: result !== null ? result.rows : []}
 	} catch (e) {
+		console.log(e)
 		return {success: false, err: e}
 	} finally {
 		client.release()
