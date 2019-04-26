@@ -8,5 +8,11 @@ module.exports = {
                 FROM account 
                 WHERE login = '${login}' AND pwd = '${hashedpwd}'`;
 		return await pool.fetchScalar(query, "acc_id");
+    },
+    accIdOffice: async (email) => {
+		const query = `SELECT acc_id 
+                FROM account 
+                WHERE office_id = '${email}'`;
+		return await pool.fetchScalar(query, "acc_id");
 	}
 };
