@@ -33,7 +33,7 @@
             <div class="tags-select__container">
                 <h3 class="tags-select__title">Оберіть теги, які найкраще описують ваші інтереси</h3>
 
-                <form class="tags-select__form" method="post">
+                <form class="tags-select__form" method="post" action="/user/profile/update-tags">
                     <select class="form-control tags-select" name="tags[]" multiple="multiple">
                         <% locals.tags.forEach(function (tag) { %>
                             <option value="<%= tag.id %>"
@@ -42,7 +42,7 @@
                             ><%= tag.name %></option>
                         <% }) %>
                     </select>
-                    <button type="submit">Підтвердити вибір</button>
+                    <button type="submit" class="btn btn-primary">Підтвердити вибір</button>
                 </form>
             </div>
         <% } %>

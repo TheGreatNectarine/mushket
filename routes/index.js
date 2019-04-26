@@ -27,14 +27,12 @@ router.get('/', async (req, res, next) => {
     }
 
     let results = []
-    console.log(req.query)
     try {
         results = await subjects.getFilteredSubjects(req.query)
     } catch (e) {
         results = []
     }
 
-    console.log(filterArgs);
     res.render('pages/index', {courses: results.data, filterConfig: filterConfig})
 })
 
