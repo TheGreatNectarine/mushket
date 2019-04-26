@@ -149,12 +149,21 @@ const createSubject = async (keywords) => {
 		rating, trimester, is_for_bachelor, description, photo_url])
 }
 
+const getSubjectsForIndex = async () => {
+	const query = `
+      SELECT s.id, s.subject_name as title, s.description, s.rating
+      FROM subject s
+	`
+	return await pool.fetchMany(query)
+}
+
 module.exports = {
 	getFilteredSubjects: getFilteredSubjects,
 	getReviewsBySubjectId: getReviewsBySubjectId,
 	getById: getById,
 	getTeachersBySubjectId: getTeachersBySubjectId,
-	createSubject: createSubject
+	createSubject: createSubject,
+	getSubjectsForIndex: getSubjectsForIndex
 	// getSubjectsByStudentIDAndSubjectType: getSubjectsByStudentIDAndSubjectType
 }
 
