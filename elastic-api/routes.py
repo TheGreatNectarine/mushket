@@ -37,7 +37,8 @@ def _transform(body):
         'description': body.get('description'),
         # 'annotations': body.get('annotations'),
         # 'teacher': body.get('teacher'),
-        'rating': body.get('rating')
+        'rating': body.get('rating'),
+        'photo_url': body.get('photo_url')
     }
 
 
