@@ -59,3 +59,4 @@ def setup_routes(app):
 
     router.add_route('POST', '/addIndex', add_index, name='add_index')
     router.add_route('GET', '/search', get_res, name='search')
+    router.add_route('POST', '/addAll', add_indexes, name='add_all')
