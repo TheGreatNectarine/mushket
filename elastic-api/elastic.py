@@ -12,7 +12,7 @@ async def search(es, keywords: str):
         "query": {
             "multi_match": {
                 "query": keywords,
-                "fields": ["title", "description", "teacher"]  # subject fields that you wanna search
+                "fields": ["title", "description"]  # subject fields that you wanna search
             }
         }
     }

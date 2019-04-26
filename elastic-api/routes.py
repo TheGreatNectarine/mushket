@@ -6,14 +6,7 @@ from elastic import index, search
 async def add_index(request):
     body = await request.json()
     try:
-        subject = {
-            'id': body.get('id'),
-            'title': body.get('title'),
-            'description': body.get('description'),
-            # 'annotations': body.get('annotations'),
-            'teacher': body.get('teacher'),
-            'rating': body.get('rating')
-        }
+        subject = _transform(body)
     except KeyError:
         raise web.HTTPBadRequest()
 
@@ -43,7 +36,7 @@ def _transform(body):
         'title': body.get('title'),
         'description': body.get('description'),
         # 'annotations': body.get('annotations'),
-        'teacher': body.get('teacher'),
+        # 'teacher': body.get('teacher'),
         'rating': body.get('rating')
     }
 
