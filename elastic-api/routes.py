@@ -10,8 +10,9 @@ async def add_index(request):
             'id': body.get('id'),
             'title': body.get('title'),
             'description': body.get('description'),
-            'annotations': body.get('annotations'),
-            'teacher': body.get('teacher')
+            # 'annotations': body.get('annotations'),
+            'teacher': body.get('teacher'),
+            'rating': body.get('rating')
         }
     except KeyError:
         raise web.HTTPBadRequest()
@@ -19,6 +20,30 @@ async def add_index(request):
     print(body)
     await index(request.app['es'], subject)
     return web.json_response({'success': True})
+
+
+async def add_indexes(request):
+    body = await request.json()
+    try:
+        subject = body.get('subjects')
+    except KeyError:
+        raise web.HTTPBadRequest()
+    try:
+        [await index(request.app['es'], subj) for subj in subject]
+    except KeyError:
+        raise web.HTTPBadRequest()
+    return web.json_response({'success': True})
+
+
+def _transform(body):
+    return {
+        'id': body.get('id'),
+        'title': body.get('title'),
+        'description': body.get('description'),
+        # 'annotations': body.get('annotations'),
+        'teacher': body.get('teacher'),
+        'rating': body.get('rating')
+    }
 
 
 async def get_res(request):
