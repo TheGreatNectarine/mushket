@@ -40,5 +40,11 @@ body {
   color: white;
   font-size: 20px;
 }
+.login-container .btn-office {
+  background-color: #ffab2f;
+  color: white;
+  font-weight: 500;
+  width: 100%;
+}
 
 /*# sourceMappingURL=login.css.map */
