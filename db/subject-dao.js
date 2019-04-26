@@ -9,6 +9,7 @@ const getFilteredSubjects = async (keywords) => {
 	`
 	const faculty = keywords["faculty"]
 	const subject_type = keywords["subject_type"]
+	const studentID = keywords["studentID"]
 	const credits = keywords["credits"]
 	const trimester = keywords["trimester"]
 	const tags = keywords["tags"]
@@ -26,15 +27,28 @@ const getFilteredSubjects = async (keywords) => {
 		argumentIndex += 1
 	}
 	if (subject_type && studentID) { // TODO NEED REVIEW
-		queryArguments.push(subject_type)
-		query += `AND s.id IN (SELECT sp_s.subject_id
-					   FROM specialization_subject sp_s
-					   WHERE subject_category = $${argumentIndex} `
+		if (subject_type === "Вибіркова") {
+			query += `AND s.id IN (SELECT s1.id
+                                   FROM subject s1
+                                   EXCEPT
+                                   SELECT sp_s.subject_id
+                                   FROM specialization_subject sp_s
+                                   WHERE (sp_s.subject_category = 'Нормативна'
+                                     OR sp_s.subject_category = 'Професійно-орієнтована')
+                                     AND sp_s.specialization_id IN (SELECT st.specialization_id
+                                                                    FROM student st
+                                                                    WHERE st.id = $${argumentIndex})) `
+		} else {
+			query += `AND s.id IN (SELECT sp_s.subject_id
+					               FROM specialization_subject sp_s
+					               WHERE sp_s.subject_category = '${subject_type}'
+		                           AND sp_s.specialization_id IN (SELECT st.specialization_id
+		                                                          FROM student st
+		                                                          WHERE st.id = $${argumentIndex})) `
+		}
+
 		queryArguments.push(studentID)
-		argumentIndex += 1
-		query += `AND sp_s.specialization_id IN (SELECT st.specialization_id
-		                                         FROM student st
-		                                         WHERE st.id = $${argumentIndex})) `
+
 		argumentIndex += 1
 	}
 	if (credits) {
@@ -58,6 +72,7 @@ const getFilteredSubjects = async (keywords) => {
 			argumentIndex += 1
 		}
 	}
+	console.log(query, queryArguments)
 	return await pool.fetchMany(query, queryArguments)
 }
 
@@ -93,7 +108,7 @@ const getReviewsBySubjectId = async (id) => {
 		WHERE review.subject_id = ${id}
 	)
 		ORDER BY submit_date;`
-	return pool.fetchMany(query);
+	return pool.fetchMany(query)
 }
 
 const getById = async (id) => {
@@ -101,17 +116,17 @@ const getById = async (id) => {
 		SELECT *
 		FROM subject
 		WHERE id = ${id}
-	`;
-	return pool.fetchOne(query);
+	`
+	return pool.fetchOne(query)
 }
 
 const getTeachersBySubjectId = async (id) => {
-	const query =  `SELECT *
+	const query = `SELECT *
 					FROM teacher
 					WHERE id IN (SELECT teacher_id
 								FROM teacher_subject
-								WHERE subject_id = ${id});`;
-	return pool.fetchMany(query);
+								WHERE subject_id = ${id});`
+	return pool.fetchMany(query)
 }
 
 const createSubject = async (keywords) => {
