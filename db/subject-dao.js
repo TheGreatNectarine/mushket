@@ -53,7 +53,7 @@ const getFilteredSubjects = async (keywords) => {
 	}
 	if (credits) {
 		queryArguments.push(credits)
-		query += `AND s.number_of_credits <= $${argumentIndex} `
+		query += `AND s.number_of_credits < $${argumentIndex} `
 		argumentIndex += 1
 	}
 	if (trimester) {
@@ -151,7 +151,7 @@ const createSubject = async (keywords) => {
 
 const getSubjectsForIndex = async () => {
 	const query = `
-      SELECT s.id, s.subject_name as title, s.description, s.rating
+      SELECT s.id, s.subject_name as title, s.description, s.rating, s.photo_url
       FROM subject s
 	`
 	return await pool.fetchMany(query)
