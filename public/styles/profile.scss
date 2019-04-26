@@ -52,3 +52,24 @@
 		}
 	}
 }
+
+.sectionProfile {
+	padding-top: 40px;
+
+	.tags-select {
+
+		&__title {
+			margin-bottom: 30px;
+		}
+		&__container {
+			max-width: 1000px;
+			margin: 0 auto;
+			text-align: center;
+			font-size: 18px;
+
+			.btn {
+				margin-top: 25px;
+			}
+		}
+	}
+}

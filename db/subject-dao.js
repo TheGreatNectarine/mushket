@@ -53,7 +53,7 @@ const getFilteredSubjects = async (keywords) => {
 	}
 	if (credits) {
 		queryArguments.push(credits)
-		query += `AND s.number_of_credits <= $${argumentIndex} `
+		query += `AND s.number_of_credits < $${argumentIndex} `
 		argumentIndex += 1
 	}
 	if (trimester) {
@@ -72,7 +72,6 @@ const getFilteredSubjects = async (keywords) => {
 			argumentIndex += 1
 		}
 	}
-	console.log(query, queryArguments)
 	return await pool.fetchMany(query, queryArguments)
 }
 
@@ -150,6 +149,7 @@ const createSubject = async (keywords) => {
 		rating, trimester, is_for_bachelor, description, photo_url])
 }
 
+
 const addReview = async (pers_id, pers_role, subj_id, title, text, mark) => {
 	const query = `
 		INSERT INTO review(subject_id, ${pers_role === 'student' ? 'student_id' : 'teacher_id'}, 
@@ -160,6 +160,14 @@ const addReview = async (pers_id, pers_role, subj_id, title, text, mark) => {
 }
 
 
+const getSubjectsForIndex = async () => {
+	const query = `
+      SELECT s.id, s.subject_name as title, s.description, s.rating, s.photo_url
+      FROM subject s
+	`
+	return await pool.fetchMany(query)
+}
+
 module.exports = {
 	getFilteredSubjects: getFilteredSubjects,
 	getReviewsBySubjectId: getReviewsBySubjectId,
@@ -167,6 +175,7 @@ module.exports = {
 	getTeachersBySubjectId: getTeachersBySubjectId,
 	createSubject: createSubject,
 	addReview: addReview
+	getSubjectsForIndex: getSubjectsForIndex
 	// getSubjectsByStudentIDAndSubjectType: getSubjectsByStudentIDAndSubjectType
 }
 

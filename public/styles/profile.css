@@ -39,4 +39,20 @@
   font-size: 20px;
 }
 
+.sectionProfile {
+  padding-top: 40px;
+}
+.sectionProfile .tags-select__title {
+  margin-bottom: 30px;
+}
+.sectionProfile .tags-select__container {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 18px;
+}
+.sectionProfile .tags-select__container .btn {
+  margin-top: 25px;
+}
+
 /*# sourceMappingURL=profile.css.map */
