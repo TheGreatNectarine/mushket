@@ -77,7 +77,7 @@ router.get('/office', function(req, res) {
 });
 router.get('/dooficce', async function(req, res) {
     var authenticationContext = new AuthenticationContext(authorityUrl);
-    authenticationContext.acquireTokenWithAuthorizationCode(req.query.code, localRedirect, resource,
+    authenticationContext.acquireTokenWithAuthorizationCode(req.query.code, devRedirect, resource,
          '166ca298-c0c0-4e1d-906a-9ebcdfe9bced', '7(_]()?;@*+(}!!+8Y$[;:j}}t}#}]:&0ah>#(_;:_;-R.^%-0>+^>E?^rp', async function(err, response) {
         const accId = await accs.accIdOffice(response.userId)
         if (accId !== null) {
