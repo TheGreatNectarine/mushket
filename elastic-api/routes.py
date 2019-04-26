@@ -24,10 +24,12 @@ async def add_index(request):
 
 async def add_indexes(request):
     body = await request.json()
+    print('/addAll')
     try:
         subject = body.get('subjects')
     except KeyError:
         raise web.HTTPBadRequest()
+    print('INSERTING DATA')
     try:
         [await index(request.app['es'], subj) for subj in subject]
     except KeyError:

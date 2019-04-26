@@ -3,6 +3,7 @@ from elasticsearch_async import AsyncElasticsearch
 
 # subject = {'id': subject_id, plus all needed information}
 async def index(es, subject: dict):
+    print(f'INSERTING SUBJECT WITH ID: {subject["id"]}')
     await es.index(index='subjects', doc_type='subject', id=subject['id'], body=subject)
 
 
