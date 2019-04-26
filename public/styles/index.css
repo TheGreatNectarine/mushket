@@ -77,6 +77,16 @@
 .sectionCourses__rightCol .coursesContainer {
   border-top: 1px solid #dfdfdf;
 }
+.sectionCourses__rightCol .pagination {
+  justify-content: center;
+  margin-top: 20px;
+}
+.sectionCourses__rightCol .pagination .prev, .sectionCourses__rightCol .pagination .next {
+  display: none;
+}
+.sectionCourses__rightCol .course-page:not(.active) {
+  display: none;
+}
 .sectionCourses__rightCol .course-wrapper {
   display: flex;
   justify-content: space-between;

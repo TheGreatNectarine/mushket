@@ -97,7 +97,20 @@
 			border-top: 1px solid $greyLight;
 		}
 
+		.pagination {
+			justify-content: center;
+			margin-top: 20px;
+
+			.prev, .next {
+				display: none;
+			}
+		}
+
 		.course {
+			&-page:not(.active) {
+				display: none;
+			}
+
 			&-wrapper {
 				display: flex;
 				justify-content: space-between;

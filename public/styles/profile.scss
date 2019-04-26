@@ -62,10 +62,14 @@
 			margin-bottom: 30px;
 		}
 		&__container {
-			max-width: 600px;
+			max-width: 1000px;
 			margin: 0 auto;
 			text-align: center;
 			font-size: 18px;
+
+			.btn {
+				margin-top: 25px;
+			}
 		}
 	}
 }
