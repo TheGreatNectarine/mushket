@@ -84,58 +84,5 @@
 .sectionCourses__rightCol .pagination .prev, .sectionCourses__rightCol .pagination .next {
   display: none;
 }
-.sectionCourses__rightCol .course-page:not(.active) {
-  display: none;
-}
-.sectionCourses__rightCol .course-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 20px 0;
-  border-bottom: 1px solid #dfdfdf;
-}
-.sectionCourses__rightCol .course__image {
-  background: #f3f3f3 no-repeat center;
-  background-size: cover;
-  padding-bottom: 56%;
-  height: 0;
-}
-.sectionCourses__rightCol .course__image-wrapper {
-  flex: 0 0 35%;
-  position: relative;
-  border-radius: 7px;
-  overflow: hidden;
-}
-.sectionCourses__rightCol .course__info {
-  flex: 0 0 65%;
-  display: flex;
-  flex-direction: column;
-  padding-left: 20px;
-}
-.sectionCourses__rightCol .course__info-name {
-  font-weight: 700;
-  color: #232b2d;
-  font-size: 17px;
-}
-.sectionCourses__rightCol .course__info-rating {
-  padding: 0 0 5px;
-  color: #777777;
-  font-size: 18px;
-}
-.sectionCourses__rightCol .course__info-rating .comments-count {
-  font-size: 14px;
-  margin-left: 10px;
-}
-.sectionCourses__rightCol .course__info-description {
-  font-size: 14px;
-  color: #777777;
-}
-.sectionCourses__rightCol .course__info-lector {
-  font-size: 13px;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #232b2d;
-  margin-top: 10px;
-}
 
 /*# sourceMappingURL=index.css.map */

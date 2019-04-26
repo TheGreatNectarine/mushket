@@ -1,10 +1,12 @@
 @import "common/variables";
 @import "common/buttons";
+
 @import "components/stars";
 @import "components/navbar";
 @import "components/footer";
 @import "components/section-top";
 @import "components/profile-preview";
+@import "components/course-template";
 
 * {
 	box-sizing: border-box;

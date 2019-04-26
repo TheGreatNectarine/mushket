@@ -15,7 +15,7 @@ router.get('/', async (req, res, next) => {
     }
 
     const filterConfig = {
-        "trymesters": ['1', '2', '2д', '3', '4', '4д', '5', '6', '6д', '7', '8'],
+        "trymesters": ['1', '2', '2Д', '3', '4', '4Д', '5', '6', '6Д', '7', '8'],
         "credits": {
             "min": 2,
             "max": 12,
