@@ -7,6 +7,13 @@ const faculties = require("../db/faculty-dao")
 
 /* GET home page. */
 router.get('/', async (req, res, next) => {
+    let filterArgs = req.query
+    if (res.locals.user.role === 'student') {
+        filterArgs['studentID'] = res.locals.user.model.id
+    } else {
+        delete filterArgs['studentID']
+    }
+
     const filterConfig = {
         "trymesters": ['1', '2', '2д', '3', '4', '4д', '5', '6', '6д', '7', '8'],
         "credits": {
@@ -15,14 +22,8 @@ router.get('/', async (req, res, next) => {
             "step": 0.5
         },
         "types": ['Професійно-орієнтована', 'Нормативна', 'Вибіркова'],
-        "faculties": (await faculties.getAllFaculties()).data
-    }
-
-    let filterArgs = req.query
-    if (res.locals.user.role === 'student') {
-        filterArgs['studentID'] = res.locals.user.model.id
-    } else {
-        delete filterArgs['studentID']
+        "faculties": (await faculties.getAllFaculties()).data,
+        "selectedArgs": filterArgs
     }
 
     let results = []
@@ -32,7 +33,9 @@ router.get('/', async (req, res, next) => {
     } catch (e) {
         results = []
     }
-    res.render('pages/index', {courses: results.data, filters: filterArgs, filterConfig: filterConfig})
+
+    console.log(filterArgs);
+    res.render('pages/index', {courses: results.data, filterConfig: filterConfig})
 })
 
 module.exports = router

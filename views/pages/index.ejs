@@ -24,8 +24,15 @@
                             <label for="facultyInput">Факультет</label>
                             <select id="facultyInput" name="faculty">
                                 <option selected value>- Не вибрано -</option>
-                                <% locals.filterConfig.faculties.forEach((fac) => { %>
-                                    <option value="<%= fac.name %>"><%= fac.name %></option>
+                                <% filterConfig.faculties.forEach((fac) => { %>
+                                    <% let selected = filterConfig.selectedArgs.faculty === fac.name; %>
+                                    <option
+                                            value="<%= fac.name %>"
+                                            <% if(selected) { %>selected
+                                            <% } %>
+                                    >
+                                        <%= fac.name %>
+                                    </option>
                                 <% }); %>
                             </select>
                         </div>
@@ -36,13 +43,13 @@
                             <label for="creditsInput">Кредити</label>
                             <div class="creditsBlock-flex">
                                 <input type="range" name="credits" id="creditsInput"
-                                       min="<%= locals.filterConfig.credits.min %>"
-                                       max="<%= locals.filterConfig.credits.max %>"
-                                       value="<%= locals.filterConfig.credits.max %>"
-                                       step="<%= locals.filterConfig.credits.step %>"
+                                       min="<%= filterConfig.credits.min %>"
+                                       max="<%= filterConfig.credits.max %>"
+                                       value="<%= filterConfig.selectedArgs.credits? filterConfig.selectedArgs.credits : filterConfig.credits.max %>"
+                                       step="<%= filterConfig.credits.step %>"
                                        oninput="creditsOutput.value = creditsInput.value">
                                 <output class="creditsValue" name="ageOutputName" id="creditsOutput">
-                                    <%= locals.filterConfig.credits.max %>
+                                    <%= filterConfig.selectedArgs.credits? filterConfig.selectedArgs.credits : filterConfig.credits.max %>
                                 </output>
                             </div>
 
@@ -51,19 +58,36 @@
                             <label for="trymesterInput">Триместр</label>
                             <select id="trymesterInput" name="trimester">
                                 <option selected value>- Не вибрано -</option>
-                                <% locals.filterConfig.trymesters.forEach((trym) => { %>
-                                    <option value="<%= trym %>"><%= trym %></option>
+                                <% filterConfig.trymesters.forEach((trym) => { %>
+                                    <% let selected = filterConfig.selectedArgs.trimester === trym; %>
+                                    <option
+                                            value="<%= trym %>"
+                                            <% if(selected) { %>selected
+                                            <% } %>
+                                    >
+                                        <%= trym %>
+                                    </option>
                                 <% }); %>
                             </select>
                         </div>
-                        <div class="filterBlock">
-                            <label for="typesInput">Тип</label>
-                            <select id="typesInput" name="subject_type">
-                                <option selected value>- Не вибрано -</option>
-                                <% locals.filterConfig.types.forEach((trym) => { %>
-                                    <option value="<%= trym %>"><%= trym %></option>
-                                <% }); %>
-                            </select></div>
+                        <% if (locals.user.role === "student") { %>
+                            <div class="filterBlock">
+                                <label for="typesInput">Тип</label>
+                                <select id="typesInput" name="subject_type">
+                                    <option selected value>- Не вибрано -</option>
+                                    <% filterConfig.types.forEach((type) => { %>
+                                        <% let selected = filterConfig.selectedArgs.subject_type === type; %>
+                                        <option
+                                                value="<%= type %>"
+                                                <% if(selected) { %>selected
+                                                <% } %>
+                                        >
+                                            <%= type %>
+                                        </option>
+                                    <% }); %>
+                                </select>
+                            </div>
+                        <% } %>
                         <button class="btn btn-block btn-purple">Застосувати</button>
                     </form>
                 </div>
@@ -80,7 +104,6 @@
         </div>
     </div>
 </section>
-
 
 <% include ../common/page-bottom-layout.ejs %>
 

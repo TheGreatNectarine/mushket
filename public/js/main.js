@@ -30,4 +30,10 @@ $(function () {
         addFooterPadding()
     })
     $(window).on('scroll', checkScrolled)
+
+    // if(!(typeof selectedArgs === 'undefined' || selectedArgs === null)) {
+    //     Object.keys(selectedArgs).forEach(function (key) {
+    //         $(`input[name=${key}]`).val(selectedArgs[key]).prop('selected', true)
+    //     })
+    // }
 })
