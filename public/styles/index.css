@@ -85,7 +85,7 @@
   border-bottom: 1px solid #dfdfdf;
 }
 .sectionCourses__rightCol .course__image {
-  background: no-repeat center;
+  background: #f3f3f3 no-repeat center;
   background-size: cover;
   padding-bottom: 56%;
   height: 0;

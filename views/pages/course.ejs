@@ -21,7 +21,10 @@
                 <p class="lecturer-title">Викладачі</p>
                 <% locals.teachers.forEach(function (teacher) { %>
                     <a href="/user/profile/<%= teacher.id %>"
-                       class="lecturer-link"><%= teacher.full_name %></a>
+                       class="lecturer-link">
+                        <div class="user-icon" style="background-image: url(<%= teacher.photo_link %>)"></div>
+                        <%= teacher.full_name %>
+                    </a>
                 <% }) %>
             </div>
         </div>
