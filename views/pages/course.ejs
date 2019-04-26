@@ -64,40 +64,49 @@
                 </div>
             </div>
             <div class="col-xl-4 col-md-5">
-                <% if (can_review) { %>
-                    <div class="block block__sendReview">
-                        <h3>Залишити відгук:</h3>
+                <div class="block block__sendReview">
+                    <% if (locals.user.role === "guest") { %>
+                        <h4>Увійдіть у систему, щоб мати можливість залишити відгук</h4>
+                    <% } else if (locals.user.role === "teacher") { %>
+                        <h4>Вчителі не мають можливісті залишати відгук</h4>
+                    <% } else if (locals.user.role === "student") { %>
+                        <% if (!can_review) { %>
+                            <h4>Щоб залишити відгук ви маєте прослухати цю дисципліну</h4>
+                        <% } else { %>
 
-                        <form class="review-form" method="post" action="">
-                            <div class="form-group">
-                                <label for="reviewForm-title">
-                                    Заголовок відгуку
-                                </label>
-                                <input id="reviewForm-title" class="form-control" name="title" type="text"
-                                       placeholder="Заголовок відгуку">
-                            </div>
-                            <div class="form-group">
-                                <label for="reviewForm-details">
-                                    Деталі відгуку
-                                </label>
-                                <textarea id="reviewForm-details" class="form-control" name="details"
-                                          placeholder="Деталі відгуку"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="reviewForm-rating">
-                                    Оцінка курсу (від 1 до 5)
-                                </label>
-                                <input id="reviewForm-rating" class="form-control" name="rating" type="number" min="1.0"
-                                       max="5.0"
-                                       placeholder="Оцінка курсу (від 1 до 5)">
-                            </div>
-                            <button type="submit" class="btn btn-primary">Опублікувати відгук</button>
-                        </form>
-                    </div>
-                <% } %>
+                            <h3>Залишити відгук:</h3>
+
+                            <form class="review-form" method="post" action="">
+                                <div class="form-group">
+                                    <label for="reviewForm-title">
+                                        Заголовок відгуку
+                                    </label>
+                                    <input id="reviewForm-title" class="form-control" name="title" type="text"
+                                           placeholder="Заголовок відгуку">
+                                </div>
+                                <div class="form-group">
+                                    <label for="reviewForm-details">
+                                        Деталі відгуку
+                                    </label>
+                                    <textarea id="reviewForm-details" class="form-control" name="details"
+                                              placeholder="Деталі відгуку"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="reviewForm-rating">
+                                        Оцінка курсу (від 1 до 5)
+                                    </label>
+                                    <input id="reviewForm-rating" class="form-control" name="rating" type="number"
+                                           min="1.0"
+                                           max="5.0"
+                                           placeholder="Оцінка курсу (від 1 до 5)">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Опублікувати відгук</button>
+                            </form>
+                        <% } %>
+                    <% } %>
+                </div>
             </div>
         </div>
-    </div>
 </section>
 
 
