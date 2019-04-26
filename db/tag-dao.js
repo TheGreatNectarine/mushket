@@ -3,7 +3,7 @@ const pool = require("./db-pool")
 
 module.exports = {
 	getAllTags: async () => await pool.fetchMany("SELECT * FROM tag"),
-	getSelectedTags: async (id) => {
+	getSelectedTagsByStudentID: async (id) => {
 		const query = `
           SELECT t.id,
                  t.name,
