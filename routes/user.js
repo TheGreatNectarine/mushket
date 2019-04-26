@@ -3,6 +3,7 @@ var router = express.Router()
 const accs = require('../db/accounts-dao')
 const teachers = require('../db/teachers-dao')
 const studs = require('../db/students-dao')
+const tags_dao = require('../db/tag-dao')
 const sessions = require('../middleware/sessions')
 const crypto = require('crypto')
 
@@ -29,6 +30,7 @@ router.post('/login', async function (req, res) {
         return res.redirect('/')
 
     const accId = await accs.accId(req.body.login, req.body.pwd)
+
     if (accId !== null) {
         const sessID = crypto.randomBytes(16).toString('hex')
         let redirectUrl = '/'
@@ -61,11 +63,15 @@ router.get('/profile/:id', async function (req, res, next) {
     return res.render('pages/public-profile', {profile: profile})
 })
 
-router.get('/profile', function (req, res, next) {
+router.get('/profile', async function (req, res, next) {
     if (res.locals.user.role === 'guest')
         return res.redirect('/user/login')
+    else if(res.locals.user.role === 'student') {
+        const tags = (await tags_dao.getSelectedTagsByStudentID(res.locals.user.model.id)).data
+        return res.render('pages/personal-profile', {tags: tags})
+    }
 
-    res.render('pages/personal-profile')
+    return res.render('pages/personal-profile')
 })
 
 router.get('/office', function(req, res) {

@@ -72,7 +72,6 @@ const getFilteredSubjects = async (keywords) => {
 			argumentIndex += 1
 		}
 	}
-	console.log(query, queryArguments)
 	return await pool.fetchMany(query, queryArguments)
 }
 
