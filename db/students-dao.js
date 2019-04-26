@@ -16,8 +16,8 @@ module.exports = {
 		const result = await pool.fetchOne(`
           SELECT EXISTS(SELECT *
                         FROM student_subject ss
-                        WHERE ss.student_id = $ 1
-                          AND ss.subject_id = $ 2)
+                        WHERE ss.student_id = $1
+                          AND ss.subject_id = $2)
 		`, [studentID, subjectID])
 		if (result.data && result.data.exists) {
 			return result.data.exists
