@@ -1,0 +1,21 @@
+<%- include('../common/page-top-layout.ejs', {classes:"transparent"}); %>
+
+<link rel="stylesheet" type="text/css" href="/styles/support.css">
+
+
+<div class="container">
+    <form>
+        <div class="ticket-block">
+            <label for="ticket_details">Потрібна допомога?</label>
+            <textarea id="ticket_details" cols="30" rows="7" required placeholder="Опишіть тут"></textarea>
+        </div>
+        <div class="ticket-block">
+            <label for="ticket_email">Ваша пошта?</label>
+            <input id="ticket_email" type="email" placeholder="Пошта" size="32" required>
+        </div>
+        <button class="btn btn-block btn-purple" type="submit">Submit</button>
+    </form>
+</div>
+
+
+<% include ../common/page-bottom-layout.ejs %>

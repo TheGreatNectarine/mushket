@@ -1,6 +1,6 @@
 <div class="course-wrapper">
-    <div class="course__image">
-        <img src="<%= locals.course.photo_url %>">
+    <div class="course__image-wrapper">
+        <div class="course__image" style="background-image: url(<%= locals.course.photo_url %>)"></div>
     </div>
     <div class="course__info">
         <a href="/course/<%= locals.course.id %>" class="course__info-name"><%= locals.course.subject_name %></a>

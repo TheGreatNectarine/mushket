@@ -1,7 +1,7 @@
 var express = require('express')
 var router = express.Router()
 const accs = require('../db/accounts-dao')
-const teachers = require('../db/tachers-dao')
+const teachers = require('../db/teachers-dao')
 const studs = require('../db/students-dao')
 const sessions = require('../middleware/sessions')
 const crypto = require('crypto')
@@ -18,14 +18,14 @@ const officeUrl = (state) => "https://login.microsoftonline.com/common/oauth2/au
 const resource = '166ca298-c0c0-4e1d-906a-9ebcdfe9bced';
 /* GET login page. */
 router.get('/login', function (req, res) {
-    if(res.locals.user.role !== 'guest')
+    if (res.locals.user.role !== 'guest')
         return res.redirect('/')
 
     return res.render('pages/login')
 })
 
 router.post('/login', async function (req, res) {
-    if(res.locals.user.role !== 'guest')
+    if (res.locals.user.role !== 'guest')
         return res.redirect('/')
 
     const accId = await accs.accId(req.body.login, req.body.pwd)
@@ -52,19 +52,21 @@ router.get('/logout', function (req, res, next) {
     res.redirect('/')
 })
 
-var profileExample = require('../db/_testing_obj').profileExample;
-
-router.get("/profile/:id", function (req, res, next) {
+router.get('/profile/:id', async function (req, res, next) {
     const profile_id = req.params.id
-    res.render("pages/public-profile", {profile: profileExample});
-});
+    if (res.locals.user.role !== 'guest' && profile_id == res.locals.user.model.id) {
+        return res.redirect('/user/profile')
+    }
+    let profile = (await teachers.getByID(profile_id)).data
+    return res.render('pages/public-profile', {profile: profile})
+})
 
-router.get("/profile", function (req, res, next) {
-    if(res.locals.user.role === 'guest')
+router.get('/profile', function (req, res, next) {
+    if (res.locals.user.role === 'guest')
         return res.redirect('/user/login')
 
-    res.render("pages/personal-profile");
-});
+    res.render('pages/personal-profile')
+})
 
 router.get('/office', function(req, res) {
     const state = crypto.randomBytes(16).toString('hex')
@@ -75,7 +77,7 @@ router.get('/office', function(req, res) {
 });
 router.get('/dooficce', async function(req, res) {
     var authenticationContext = new AuthenticationContext(authorityUrl);
-    authenticationContext.acquireTokenWithAuthorizationCode(req.query.code, localRedirect, resource,
+    authenticationContext.acquireTokenWithAuthorizationCode(req.query.code, devRedirect, resource,
          '166ca298-c0c0-4e1d-906a-9ebcdfe9bced', '7(_]()?;@*+(}!!+8Y$[;:j}}t}#}]:&0ah>#(_;:_;-R.^%-0>+^>E?^rp', async function(err, response) {
         const accId = await accs.accIdOffice(response.userId)
         if (accId !== null) {

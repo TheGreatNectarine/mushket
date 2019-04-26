@@ -22,4 +22,11 @@ router.get('/:id', async function (req, res, next) {
     }
 })
 
+router.post('/:id', async function (req, res, next) {
+    const subjID = req.params.id
+    console.log(req.body)
+
+    res.redirect(`/course/${subjID}`)
+})
+
 module.exports = router
