@@ -22,7 +22,7 @@ async def search(es, keywords: str):
 
 async def init_es(app):
     es = AsyncElasticsearch(hosts=app['config']['elastic-host'])
-    es.indices.delete(index='vacancies', ignore=[400, 404])  # if needed to drop previous indexes
+    # es.indices.delete(index='vacancies', ignore=[400, 404])  # if needed to drop previous indexes
     app['es'] = es
 
 

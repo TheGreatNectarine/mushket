@@ -25,7 +25,7 @@ router.get('/:id', async function (req, res, next) {
 router.post('/:id', async function (req, res, next) {
     const subjID = req.params.id
     console.log(req.body)
-
+    await subjects.addReview(res.locals.user.model.id, res.locals.user.role, subjID, req.body.title, req.body.details, req.body.rating);
     res.redirect(`/course/${subjID}`)
 })
 
