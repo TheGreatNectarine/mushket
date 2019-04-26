@@ -29,6 +29,7 @@ router.post('/login', async function (req, res) {
         return res.redirect('/')
 
     const accId = await accs.accId(req.body.login, req.body.pwd)
+
     if (accId !== null) {
         const sessID = crypto.randomBytes(16).toString('hex')
         let redirectUrl = '/'
