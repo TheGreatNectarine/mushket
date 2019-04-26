@@ -106,6 +106,7 @@ router.get('/dooficce', async function(req, res) {
 
 router.post("/profile/update-tags", async (req, res, next) => {
     const newTags = req.body;
+    studs.removeAllTags(res.locals.user.model.id)
     for (const tag of newTags) {
         studs.addTag(res.locals.user.model.id, tag.id)
     }

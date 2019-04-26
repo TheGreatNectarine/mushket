@@ -46,4 +46,12 @@ module.exports = {
 		const args = [student_id, tag_id]
 		return await pool.fetchOne(query, args)
 	},
+	removeAllTags: async (id) => {
+		const query = `
+		DELETE FROM student_tag
+		WHERE student_id = $1
+		`
+		const args = [id]
+		return await pool.fetchOne(query, args)
+	},
 }
