@@ -159,6 +159,7 @@ const addReview = async (pers_id, pers_role, subj_id, title, text, mark) => {
 	return await pool.execute(query, params);
 }
 
+
 module.exports = {
 	getFilteredSubjects: getFilteredSubjects,
 	getReviewsBySubjectId: getReviewsBySubjectId,
