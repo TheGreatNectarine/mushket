@@ -107,13 +107,17 @@
 			}
 
 			&__image {
-				flex: 0 0 35%;
-				border-radius: $borderRadiusMedium;
-				overflow: hidden;
-
-				img {
-					width: 100%;
+				&-wrapper {
+					flex: 0 0 35%;
+					position: relative;
+					border-radius: $borderRadiusMedium;
+					overflow: hidden;
 				}
+
+				background: no-repeat center;
+				background-size: cover;
+				padding-bottom: 56%;
+				height: 0;
 			}
 
 			&__info {

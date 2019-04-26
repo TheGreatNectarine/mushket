@@ -85,12 +85,16 @@
   border-bottom: 1px solid #dfdfdf;
 }
 .sectionCourses__rightCol .course__image {
+  background: no-repeat center;
+  background-size: cover;
+  padding-bottom: 56%;
+  height: 0;
+}
+.sectionCourses__rightCol .course__image-wrapper {
   flex: 0 0 35%;
+  position: relative;
   border-radius: 7px;
   overflow: hidden;
-}
-.sectionCourses__rightCol .course__image img {
-  width: 100%;
 }
 .sectionCourses__rightCol .course__info {
   flex: 0 0 65%;
