@@ -150,12 +150,22 @@ const createSubject = async (keywords) => {
 		rating, trimester, is_for_bachelor, description, photo_url])
 }
 
+const addReview = async (pers_id, pers_role, subj_id, title, text, mark) => {
+	const query = `
+		INSERT INTO review(subject_id, ${pers_role === 'student' ? 'student_id' : 'teacher_id'}, 
+							review_text, review_mark, submit_date, title)
+		VALUES ($1, $2, $3, $4, date($5), $6)`;
+	const params = [subj_id, pers_id, text, mark, new Date(), title];
+	return await pool.execute(query, params);
+}
+
 module.exports = {
 	getFilteredSubjects: getFilteredSubjects,
 	getReviewsBySubjectId: getReviewsBySubjectId,
 	getById: getById,
 	getTeachersBySubjectId: getTeachersBySubjectId,
-	createSubject: createSubject
+	createSubject: createSubject,
+	addReview: addReview
 	// getSubjectsByStudentIDAndSubjectType: getSubjectsByStudentIDAndSubjectType
 }
 
