@@ -6,12 +6,14 @@
     <div class="container text-center">
         <div class="sectionTop-title">Не можеш обрати на що записатися?</div>
 
-        <div class="input-group mb-3 search-container">
-            <input type="text" class="form-control" placeholder="Знайти предмет">
-            <div class="input-group-append">
-                <button class="btn btn-purple" type="button">ШУКАТИ</button>
+        <form method="get" action="/search">
+            <div class="input-group mb-3 search-container">
+                <input type="text" class="form-control" name="keywords" placeholder="Знайти предмет">
+                <div class="input-group-append">
+                    <button class="btn btn-purple" type="submit">ШУКАТИ</button>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
 </section>
 <section class="sectionCourses">
@@ -42,6 +44,7 @@
                         <div class="filterBlock">
                             <label for="creditsInput">Кредити</label>
                             <div class="creditsBlock-flex">
+
                                 <input type="range" name="credits" id="creditsInput"
                                        min="<%= filterConfig.credits.min %>"
                                        max="<%= filterConfig.credits.max %>"
@@ -95,13 +98,23 @@
             <div class="col-lg-8 col-md-7">
                 <div class="sectionCourses__rightCol">
                     <div class="coursesContainer">
-                        <% locals.courses.forEach(function (course) { %>
-                            <%- include('../templates/course-template.ejs', {course: course}); %>
+                        <% const perPage = 10 %>
+                        <% locals.courses.forEach(function (course, i) { %>
+                            <% if (i%perPage === 0)  { %>
+                                <% if(i !== 0){ %>
+                    </div>
+                    <% } %>
+                    <div id="course-page<%= i/perPage %>" class="course-page">
+                        <% } %>
+                        <%- include('../templates/course-template.ejs', {course: course}); %>
                         <% }); %>
                     </div>
                 </div>
+
+                <ul id="pagination-courses" class="pagination-sm"></ul>
             </div>
         </div>
+    </div>
     </div>
 </section>
 
