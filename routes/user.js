@@ -6,6 +6,16 @@ const studs = require('../db/students-dao')
 const sessions = require('../middleware/sessions')
 const crypto = require('crypto')
 
+const AuthenticationContext = require('adal-node').AuthenticationContext;
+const authorityUrl = "https://login.microsoftonline.com/ukmaedu.onmicrosoft.com"
+const devRedirect = "https://mushket.herokuapp.com/user/dooficce";
+const localRedirect = "http://localhost:5000/user/dooficce";
+
+const officeUrl = (state) => "https://login.microsoftonline.com/common/oauth2/authorize?" +
+                                "response_type=code&client_id=166ca298-c0c0-4e1d-906a-9ebcdfe9bced&" +
+                                `state=${state}&` +
+                                `redirect_uri=${localRedirect}`;
+const resource = '166ca298-c0c0-4e1d-906a-9ebcdfe9bced';
 /* GET login page. */
 router.get('/login', function (req, res) {
     if(res.locals.user.role !== 'guest')
@@ -54,6 +64,36 @@ router.get("/profile", function (req, res, next) {
         return res.redirect('/user/login')
 
     res.render("pages/personal-profile");
+});
+
+router.get('/office', function(req, res) {
+    const state = crypto.randomBytes(16).toString('hex')
+    res.cookie('authstate', state);
+    var authorizationUrl = officeUrl(state);
+  
+    res.redirect(authorizationUrl);
+});
+router.get('/dooficce', async function(req, res) {
+    var authenticationContext = new AuthenticationContext(authorityUrl);
+    authenticationContext.acquireTokenWithAuthorizationCode(req.query.code, localRedirect, resource,
+         '166ca298-c0c0-4e1d-906a-9ebcdfe9bced', '7(_]()?;@*+(}!!+8Y$[;:j}}t}#}]:&0ah>#(_;:_;-R.^%-0>+^>E?^rp', async function(err, response) {
+        const accId = await accs.accIdOffice(response.userId)
+        if (accId !== null) {
+            const sessID = crypto.randomBytes(16).toString('hex')
+            let redirectUrl = '/'
+            const stud = await studs.getByAccID(accId)
+            if (stud.data != null) {
+                sessions.attach(sessID, {role: 'student', model: stud.data})
+            } else {
+                const teacher = await teachers.getByAccID(accId)
+                sessions.attach(sessID, {role: 'teacher', model: teacher.data})
+                redirectUrl = '/user/profile'
+            }
+            return res.status(200).cookie('sessid', sessID).redirect(redirectUrl)
+        } else {
+            return res.render('pages/login', {data: {err: 'no user with such userID'}})
+        }
+    });
 });
 
 module.exports = router
