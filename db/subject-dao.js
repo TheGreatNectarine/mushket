@@ -174,7 +174,7 @@ module.exports = {
 	getById: getById,
 	getTeachersBySubjectId: getTeachersBySubjectId,
 	createSubject: createSubject,
-	addReview: addReview
+	addReview: addReview,
 	getSubjectsForIndex: getSubjectsForIndex
 	// getSubjectsByStudentIDAndSubjectType: getSubjectsByStudentIDAndSubjectType
 }
