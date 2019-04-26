@@ -95,10 +95,20 @@
             <div class="col-lg-8 col-md-7">
                 <div class="sectionCourses__rightCol">
                     <div class="coursesContainer">
-                        <% locals.courses.forEach(function (course) { %>
+                        <% const perPage = 10 %>
+                        <% locals.courses.forEach(function (course, i) { %>
+                            <% if (i%perPage === 0)  { %>
+                                <% if(i !== 0){%>
+                                    </div>
+                                <%}%>
+                                <div id="course-page<%= i/perPage %>" class="course-page">
+                            <% } %>
                             <%- include('../templates/course-template.ejs', {course: course}); %>
                         <% }); %>
+                                </div>
                     </div>
+
+                    <ul id="pagination-courses" class="pagination-sm"></ul>
                 </div>
             </div>
         </div>

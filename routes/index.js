@@ -15,17 +15,17 @@ router.get("/", async (req, res, next) => {
 		delete filterArgs["studentID"]
 	}
 
-	const filterConfig = {
-		"trymesters": ["1", "2", "2д", "3", "4", "4д", "5", "6", "6д", "7", "8"],
-		"credits": {
-			"min": 2,
-			"max": 12,
-			"step": 0.5
-		},
-		"types": ["Професійно-орієнтована", "Нормативна", "Вибіркова"],
-		"faculties": (await faculties.getAllFaculties()).data,
-		"selectedArgs": filterArgs
-	}
+    const filterConfig = {
+        "trymesters": ['1', '2', '2Д', '3', '4', '4Д', '5', '6', '6Д', '7', '8'],
+        "credits": {
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+        },
+        "types": ['Професійно-орієнтована', 'Нормативна', 'Вибіркова'],
+        "faculties": (await faculties.getAllFaculties()).data,
+        "selectedArgs": filterArgs
+    }
 
 	let results = []
 	try {

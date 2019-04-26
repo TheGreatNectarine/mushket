@@ -20,7 +20,7 @@
             <div class="col-md-3">
                 <p class="lecturer-title">Викладачі</p>
                 <% locals.teachers.forEach(function (teacher) { %>
-                    <a href="/user/profile/<%= teacher.id %>"
+                    <a href="/user/teacher_profile/<%= teacher.id %>"
                        class="lecturer-link">
                         <div class="user-icon" style="background-image: url(<%= teacher.photo_link %>)"></div>
                         <%= teacher.full_name %>

@@ -6,7 +6,9 @@
     "jquery": "3",
     "css-hamburgers": "^1.1.3",
     "components-font-awesome": "^5.4.2",
-    "select2": "~4.0"
+    "select2": "~4.0",
+    "twbs-pagination": "^1.4.2",
+    "simplePagination.js": "jquery.simplePagination#*"
   },
   "private": true
 }
