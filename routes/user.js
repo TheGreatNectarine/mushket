@@ -14,7 +14,7 @@ const localRedirect = "http://localhost:5000/user/dooficce";
 const officeUrl = (state) => "https://login.microsoftonline.com/common/oauth2/authorize?" +
                                 "response_type=code&client_id=166ca298-c0c0-4e1d-906a-9ebcdfe9bced&" +
                                 `state=${state}&` +
-                                `redirect_uri=${localRedirect}`;
+                                `redirect_uri=${devRedirect}`;
 const resource = '166ca298-c0c0-4e1d-906a-9ebcdfe9bced';
 /* GET login page. */
 router.get('/login', function (req, res) {
