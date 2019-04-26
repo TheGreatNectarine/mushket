@@ -1,14 +1,14 @@
 <%- include('../common/page-top-layout.ejs', {classes:"transparent"}); %>
 
 <link rel="stylesheet" type="text/css" href="/styles/index.css">
-
 <section class="sectionTop">
     <div class="container text-center">
         <div class="sectionTop-title">Не можеш обрати на що записатися?</div>
 
         <form method="get" action="/search">
             <div class="input-group mb-3 search-container">
-                <input type="text" class="form-control" name="keywords" placeholder="Знайти предмет">
+                <input type="text" class="form-control" name="keywords" placeholder="Знайти предмет"
+                       value="<%= filterConfig.selectedArgs.keywords %>">
                 <div class="input-group-append">
                     <button class="btn btn-purple" type="submit">ШУКАТИ</button>
                 </div>

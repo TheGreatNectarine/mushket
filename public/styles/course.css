@@ -7,12 +7,12 @@
   justify-content: space-between;
   align-items: flex-start;
 }
-.sectionTop .course__image {
+.sectionTop .course__img {
   flex: 0 0 40%;
   border-radius: 7px;
   overflow: hidden;
 }
-.sectionTop .course__image img {
+.sectionTop .course__img img {
   width: 100%;
 }
 .sectionTop .course__info {
